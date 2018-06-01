@@ -7,12 +7,13 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from "@/components/HelloWorld.vue";
+import { db } from "@/firebase.js";
 
 export default {
-  name: 'home',
+  name: "home",
   components: {
     HelloWorld
   }
-}
+};
 </script>
