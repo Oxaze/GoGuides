@@ -1,0 +1,50 @@
+/* Colors
+    ========================================================================== */
+
+$color-primary: #FACC33;
+$color-secondary: #27426F;
+
+$color-primary-sub: #E4B132;
+$color-secondary-sub: #32617C;
+
+$color-white: #F2F2F2;
+$color-black: #1B1B1B;
+$color-light-grey: #999999;
+$color-grey: #666666;
+$color-dark-grey: #333333;
+
+
+/* Typography
+    ========================================================================== */
+
+$base-line-height: normal;
+$base-font-weight: 400;
+$base-font-family: "Muli", Helvetica, Arial, sans-serif;
+
+$headings-line-height: normal;
+$headings-font-weight: 600;
+$headings-font-family: "Montserrat", Helvetica, Arial, sans-serif;
+
+
+/* Animations
+   ========================================================================== */
+
+$duration-long: 375ms;
+$duration-mid: 225ms;
+$duration-short: 195ms;
+
+$standard-easing: cubic-bezier(0.4, 0.0, 0.2, 1);
+$deceleration-easing: cubic-bezier(0.0, 0.0, 0.2, 1);
+$acceleration-easing: cubic-bezier(0.4, 0.0, 1, 1);
+$sharp-easing: cubic-bezier(0.4, 0.0, 0.6, 1);
+
+
+/* Other
+   ========================================================================== */
+
+$shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.08);
+$border-radius: 0.2rem;
+
+$mobile: 768px;
+$tablet: 992px;
+$screen: 1200px;

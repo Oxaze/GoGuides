@@ -1,0 +1,21 @@
+/* Imports
+   ========================================================================== */
+
+@import 'partials/vars';
+@import 'partials/layout';
+@import 'partials/scrollbar';
+@import 'partials/forms';
+@import 'partials/typography';
+
+
+/* Miscellaneous
+   ========================================================================== */
+
+body {
+  max-width: 100vw;
+  min-height: 100vh;
+  color: $color-white;
+  background-color: $color-primary;
+  overflow-x: hidden;
+  overflow-y: auto;
+}

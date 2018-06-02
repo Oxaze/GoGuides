@@ -1,0 +1,27 @@
+input {
+  width: 100%;
+  text-align: center;
+  font-family: inherit;
+  &[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+  &[type=number] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+  }
+  &::placeholder {
+    font-size: 0.8em;
+  }
+}
+
+.inputs__input > label {
+  font-size: 0.8em;
+  display: block;
+}
+
+.btn {
+  display: block;
+  text-align: center;
+  font-family: inherit;
+}
