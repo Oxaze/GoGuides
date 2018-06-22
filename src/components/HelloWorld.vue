@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <br><br>
+    <h2>-> {{ title }}</h2>
     <p>
       For guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -30,10 +32,29 @@
 </template>
 
 <script>
+import { createClient } from "@/contentful.js";
+const client = createClient();
+
 export default {
   name: "HelloWorld",
   props: {
     msg: String
+  },
+  mounted() {
+    this.fetchContent();
+  },
+  data() {
+    return {
+      title: null
+    };
+  },
+  methods: {
+    fetchContent() {
+      client
+        .getEntry("2ix9cam9W8eSc0uyqciG0w")
+        .then(async entry => (this.title = await entry.fields.title))
+        .catch(err => console.error(err));
+    }
   }
 };
 </script>
