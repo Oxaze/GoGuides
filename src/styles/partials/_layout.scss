@@ -1,7 +1,7 @@
-header {
+.nav__wrapper {
   display: flex;
-}
-
-main {
-  display: grid;
+  max-width: 960px;
+  margin: 0 auto;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }

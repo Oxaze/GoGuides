@@ -1,10 +1,19 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <nav class="nav">
+      <div class="nav__wrapper">
+        <h3 class="nav__logo"><router-link class="nav__link" to="home">GoGuides</router-link></h3>
+        <ul class="nav__list">
+          <li class="nav__item"><router-link class="nav__link" to="guides">Guides</router-link></li>
+          <li class="nav__item"><router-link class="nav__link" to="skins">Skins</router-link></li>
+          <li class="nav__item"><router-link class="nav__link" to="maps">Maps</router-link></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- <router-view/> -->
+    <div class="fakeView"></div>
+    <div class="fakeView__box"></div>
+    <footer class="footer"></footer>
   </div>
 </template>
 

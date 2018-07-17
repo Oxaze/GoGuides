@@ -15,7 +15,69 @@ body {
   max-width: 100vw;
   min-height: 100vh;
   color: $color-white;
-  background-color: $color-primary;
+  background: $color-black;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+// Navigation
+.nav {
+  position: relative;
+  background-color: $color-white;
+  height: 60px;
+  border-bottom-left-radius: .8rem;
+  border-bottom-right-radius: .8rem;
+  color: $color-primary;
+  z-index: 2;
+}
+
+.nav__wrapper {
+  height: 60px;
+}
+
+.nav__logo {
+  line-height: 60px;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__item {
+    list-style: none;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.nav__link {
+  text-decoration: none;
+}
+
+// Fake View
+.fakeView {
+  z-index: 1;
+  height: 1000px;
+  background: linear-gradient($color-primary, $color-primary-sub);
+  margin-top: -0.8rem;
+}
+
+.fakeView__box {
+  z-index: 2;
+  height: 300px;
+  background-color: $color-white;
+  border-radius: 0.8rem;
+  position: relative;
+  margin-top: -0.8rem;
+}
+
+// Footer
+.footer {
+  z-index: 1;
+  height: 200px;
+  background: $color-secondary;
+  margin-top: -0.8rem;
 }
