@@ -13,7 +13,15 @@
     <!-- <router-view/> -->
     <div class="fakeView"></div>
     <div class="fakeView__box"></div>
-    <footer class="footer"></footer>
+    <footer class="footer">
+      <div class="footer__wrapper">
+        <p class="footer_copyright">Copyright © GoGuides 2018</p>
+        <ul class="footer__list">
+          <li class="footer__item"><router-link to="imprint">Impressum</router-link></li>
+          <li class="footer__item"><router-link to="privacy">Datenschutz</router-link></li>
+        </ul>
+      </div>
+    </footer>
   </div>
 </template>
 
