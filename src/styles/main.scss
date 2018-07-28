@@ -93,7 +93,9 @@ body {
 
 .news__img {
   width: 100%;
-  height: auto;
+  height: 16rem;
+  object-fit: cover;
+  object-position: center;
   border-top-left-radius: 0.8rem;
   border-top-right-radius: 0.8rem;
 }
@@ -101,7 +103,6 @@ body {
 .news__wrapper {
   padding: 1.5rem 3rem;
   text-align: center;
-  height: 15  rem;
 }
 
 .news__wrapper > * {

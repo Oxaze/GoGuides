@@ -17,10 +17,14 @@
 .home-wrapper {
   max-width: 960px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: minmax(min-content, 1fr);
-  grid-gap: 3.2rem;
+  column-count: 1;
+  column-gap: 3rem;
+}
+
+@media (min-width: $tablet) {
+  .home-wrapper {
+    column-count: 2;
+  }
 }
 
 .news__wrapper {
