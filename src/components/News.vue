@@ -1,8 +1,8 @@
 <template>
   <div class="news">
+    <img v-bind:src="imageUrl" alt="thumbnail" class="news__img">
     <h3>{{ title }}</h3>
-    <p>{{ newsText }}</p>
-    <br><br>
+    <p>News  •  {{ formattedDate }}</p>
   </div>
 </template>
 
@@ -21,7 +21,9 @@ export default {
   data() {
     return {
       title: null,
-      newsText: null
+      imageUrl:
+        "http://res.cloudinary.com/yrfhccre/image/upload/c_fit,f_auto,q_auto:best,fl_progressive/v1491951924/placeholder_2_jzkqjm",
+      releaseDate: null
     };
   },
   methods: {
@@ -30,9 +32,16 @@ export default {
         .getEntry(this.id)
         .then(async entry => {
           this.title = await entry.fields.title;
-          this.newsText = await entry.fields.newsText;
+          this.imageUrl = await entry.fields.imageUrl;
+          this.releaseDate = await entry.fields.releaseDate;
         })
         .catch(err => console.error(err));
+    }
+  },
+  computed: {
+    formattedDate() {
+      let d = new Date(Date.parse(this.releaseDate));
+      return d.toLocaleDateString("de-DE");
     }
   }
 };

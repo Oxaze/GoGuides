@@ -1,6 +1,11 @@
 <template>
-  <div class="home">
-    <News v-for="id in ids" :key="id" v-bind:id="id"></News>
+  <div>
+    <div class="fakeView">
+      <div class="home-wrapper">
+        <News v-for="id in ids" :key="id" v-bind:id="id"></News>
+      </div>
+    </div>
+    <div class="fakeView__box"></div>
   </div>
 </template>
 

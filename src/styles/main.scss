@@ -67,6 +67,7 @@ body {
   height: 1000px;
   background: linear-gradient($color-primary, $color-primary-sub);
   margin-top: -0.8rem;
+  padding-top: 3.2rem;
 }
 
 .fakeView__box {
@@ -76,6 +77,20 @@ body {
   border-radius: 1.6rem;
   position: relative;
   margin-top: -1.6rem;
+  padding-top: 1.6rem;
+}
+
+// News Component
+.news {
+  background-color: $color-secondary;
+  color: $color-black;
+  border-radius: 0.8rem;
+  padding: 2.4rem 1.6rem;
+}
+
+.news__img {
+  width: 100%;
+  height: auto;
 }
 
 // Footer

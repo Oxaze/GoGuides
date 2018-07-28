@@ -10,9 +10,7 @@
         </ul>
       </div>
     </nav>
-    <!-- <router-view/> -->
-    <div class="fakeView"></div>
-    <div class="fakeView__box"></div>
+    <router-view/>
     <footer class="footer">
       <div class="footer__wrapper">
         <p class="footer_copyright">Copyright © GoGuides 2018</p>
