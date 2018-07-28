@@ -22,3 +22,10 @@
   grid-template-rows: minmax(min-content, 1fr);
   grid-gap: 3.2rem;
 }
+
+.news__wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  align-content: space-between;
+}
