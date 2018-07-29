@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="nav">
       <div class="nav__wrapper">
-        <h3 class="nav__logo"><router-link class="nav__link" to="home">GoGuides</router-link></h3>
+        <h3 class="nav__logo"><router-link class="nav__link" to="/">GoGuides</router-link></h3>
         <ul class="nav__list">
           <li class="nav__item nav__item--first"><router-link class="nav__link" to="guides">Guides</router-link></li>
           <li class="nav__item"><router-link class="nav__link" to="skins">Skins</router-link></li>
