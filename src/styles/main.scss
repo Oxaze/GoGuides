@@ -68,11 +68,9 @@ body {
 // Fake View
 .fakeView {
   z-index: 1;
-  // TODO: remove height
-  height: 80rem;
   background: linear-gradient($color-primary, $color-primary-sub);
   margin-top: -0.8rem;
-  padding: 3.2rem 0 2.4rem 0;
+  padding: 3.2rem 0 4rem 0;
 }
 
 .fakeView__box {
@@ -90,7 +88,7 @@ body {
   background-color: $color-secondary;
   color: $color-black;
   border-radius: 0.8rem;
-  max-width: 450px;
+  max-width: 28.3rem;
 }
 
 .news__img {

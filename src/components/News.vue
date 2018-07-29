@@ -12,7 +12,7 @@
 import { createClient } from "@/contentful.js";
 const client = createClient();
 
-import { test } from "@/b-init.js";
+import { pack } from "@/bricks.js";
 
 export default {
   name: "News",
@@ -51,6 +51,6 @@ export default {
   }
 };
 
-test();
+pack();
 </script>
 
