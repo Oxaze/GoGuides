@@ -12,8 +12,6 @@
 import { createClient } from "@/contentful.js";
 const client = createClient();
 
-import { pack } from "@/bricks.js";
-
 export default {
   name: "News",
   props: {
@@ -48,7 +46,5 @@ export default {
     }
   }
 };
-
-pack();
 </script>
 
