@@ -9,9 +9,4 @@ export function createClient() {
 	return contentful.createClient(config);
 }
 
-// client.getEntry("2ix9cam9W8eSc0uyqciG0w").then(entry => {
-// 	console.log(entry.sys);
-// 	console.log(entry.fields.title);
-// });
-
 // -> https://www.contentful.com/developers/docs/javascript/tutorials/using-js-cda-sdk/

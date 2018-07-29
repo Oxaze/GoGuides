@@ -17,15 +17,16 @@
 .home-wrapper {
   max-width: 960px;
   margin: 0 auto;
-  column-count: 1;
-  column-gap: 3rem;
+  position: relative;
+  // column-count: 1;
+  // column-gap: 3rem;
 }
 
-@media (min-width: $tablet) {
-  .home-wrapper {
-    column-count: 2;
-  }
-}
+// @media (min-width: $tablet) {
+//   .home-wrapper {
+//     column-count: 2;
+//   }
+// }
 
 .news__wrapper {
   display: flex;

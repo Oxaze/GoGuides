@@ -10,16 +10,14 @@
 </template>
 
 <script>
-import HelloWorld from "@/components/HelloWorld.vue";
 import News from "@/components/News.vue";
-// import { db } from "@/firebase.js";
+
 import { createClient } from "@/contentful.js";
 const client = createClient();
 
 export default {
   name: "home",
   components: {
-    HelloWorld,
     News
   },
   mounted() {

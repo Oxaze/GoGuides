@@ -3,7 +3,6 @@
     <img v-bind:src="imageUrl" alt="thumbnail" class="news__img">
     <div class="news__wrapper">
           <h3 class="news__heading">{{ title }}</h3>
-          <!-- <br><br> -->
           <p>News  •  {{ formattedDate }}</p>
     </div>
   </div>
@@ -12,6 +11,8 @@
 <script>
 import { createClient } from "@/contentful.js";
 const client = createClient();
+
+import { test } from "@/b-init.js";
 
 export default {
   name: "News",
@@ -49,5 +50,7 @@ export default {
     }
   }
 };
+
+test();
 </script>
 
