@@ -33,7 +33,10 @@ export default {
   methods: {
     fetchContent() {
       client
-        .getEntries()
+        .getEntries({
+          limit: 4,
+          order: "-sys.createdAt"
+        })
         .then(entries => {
           entries.items.forEach(async entry => {
             if (entry.sys.id) {
