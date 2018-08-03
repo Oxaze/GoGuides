@@ -66,13 +66,20 @@ body {
 }
 
 // Fake View
-.news-block {
-  z-index: 1;
+.home {
   margin-top: -0.8rem;
-  padding: 3.2rem 0 1.6rem 0;
+}
+
+.news-block {
   background: linear-gradient($color-primary, $color-primary-sub);
-  overflow-y: hidden;
-  // position: relative;
+  // overflow-y: hidden;
+  position: relative;
+}
+
+.news-block__wrapper {
+  position: absolute;
+  top: 3.8rem;
+  left: 25%;
 }
 
 .parallax {
@@ -96,6 +103,10 @@ body {
   color: $color-black;
   border-radius: 0.8rem;
   margin-bottom: 3rem;
+}
+
+.news:not(:first-of-type) {
+  margin: 0;
 }
 
 .news__img {

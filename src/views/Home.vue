@@ -4,7 +4,7 @@
 
       <img class="parallax" src="https://res.cloudinary.com/yrfhccre/image/upload/h_1080/v1532900285/GoGuides/header-bg.jpg" />
 
-      <div class="news-block__wrapper" style="position: absolute; top: 6.8rem; left: 25%;">
+      <div class="news-block__wrapper">
         <div>
           <News v-for="id in ids1" :key="id" v-bind:id="id"></News>
         </div>
