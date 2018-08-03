@@ -1,21 +1,22 @@
 <template>
   <div class="home">
-    <div class="news-block">
-      <div class="news-block__wrapper">
+    <div class="news-block" style="height: 1150px; overflow: hidden;">
 
+      <img class="parallax" src="https://res.cloudinary.com/yrfhccre/image/upload/v1532900285/GoGuides/header-bg.jpg" />
+
+      <div class="news-block__wrapper" style="position: absolute; top: 6.8rem; left: 25%;">
         <div>
           <News v-for="id in ids1" :key="id" v-bind:id="id"></News>
         </div>
-
         <div>
           <News v-for="id in ids2" :key="id" v-bind:id="id"></News>
         </div>
-
       </div>
+
     </div>
     <div class="fakeView__box"></div>
   </div>
-</template>
+</template> 
 
 <script>
 import News from "@/components/News.vue";
@@ -23,6 +24,11 @@ import News from "@/components/News.vue";
 import { remove } from "30-seconds-of-code/dist/_30s.es5.min.js";
 import { createClient } from "@/contentful.js";
 const client = createClient();
+
+import * as Parallax from "scroll-parallax/dist/Parallax.min.js";
+window.onload = () => {
+  const p = new Parallax(".parallax").init();
+};
 
 export default {
   name: "home",
@@ -52,11 +58,11 @@ export default {
               await this.allIds.push(entry.sys.id);
             }
           });
-          this.changeArrays();
+          this.splitIds();
         })
         .catch(err => console.error(err));
     },
-    changeArrays() {
+    splitIds() {
       this.ids1 = this.allIds.filter((value, index, Arr) => index % 2 == 0);
       this.ids2 = remove(this.allIds, n => this.allIds.indexOf(n) % 2 !== 0);
       this.allIds = this.ids1.concat(this.ids2);
