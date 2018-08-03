@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <div class="news-block" style="height: 1150px; overflow: hidden;">
+    <div class="news-block">
 
-      <img class="parallax" src="https://res.cloudinary.com/yrfhccre/image/upload/v1532900285/GoGuides/header-bg.jpg" />
+      <img class="parallax" src="https://res.cloudinary.com/yrfhccre/image/upload/h_1080/v1532900285/GoGuides/header-bg.jpg" />
 
       <div class="news-block__wrapper" style="position: absolute; top: 6.8rem; left: 25%;">
         <div>
