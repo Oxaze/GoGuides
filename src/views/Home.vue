@@ -25,10 +25,26 @@ import { remove } from "30-seconds-of-code/dist/_30s.es5.min.js";
 import { createClient } from "@/contentful.js";
 const client = createClient();
 
-import * as Parallax from "scroll-parallax/dist/Parallax.min.js";
+import Parallax from "scroll-parallax/dist/Parallax.min.js";
 window.onload = () => {
-  const p = new Parallax(".parallax").init();
+  const p = new Parallax(".parallax", {
+    offsetYBounds: 100,
+    intensity: 100
+  });
+  p.on("image:loaded", i => {
+    let nbw = document.querySelector(".news-block__wrapper").offsetHeight;
+    let all = nbw + 48 + 38 + 48;
+    let hc = (document.querySelector(".news-block").style.height = all + "px");
+  });
+  p.init();
 };
+
+// window.onload = () => {
+//   let nbw = document.querySelector(".news-block__wrapper").offsetHeight;
+//   // console.log(nbw);
+//   let all = nbw + 48 + 38 + 48;
+//   let hc = (document.querySelector(".news-block").style.height = all + "px");
+// };
 
 export default {
   name: "home",

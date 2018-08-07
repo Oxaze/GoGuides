@@ -11,14 +11,14 @@
 </template>
 
 <script>
-import * as Parallax from "scroll-parallax/dist/Parallax.min.js";
-window.onload = () => {
-  const p = new Parallax(".parallax", {
-    // offsetYBounds: 150,
-    // intensity: 50,
-    // center: 0.5
-  }).init();
-};
+// import * as Parallax from "scroll-parallax/dist/Parallax.min.js";
+// window.onload = () => {
+//   const p = new Parallax(".parallax", {
+//     // offsetYBounds: 150,
+//     // intensity: 50,
+//     // center: 0.5
+//   }).init();
+// };
 
 export default {
   name: "guides",
