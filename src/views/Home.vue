@@ -28,8 +28,7 @@ const client = createClient();
 import Parallax from "scroll-parallax/dist/Parallax.min.js";
 window.onload = () => {
   const p = new Parallax(".parallax", {
-    offsetYBounds: 100,
-    intensity: 100
+    intensity: 80
   });
   p.on("image:loaded", i => {
     let nbw = document.querySelector(".news-block__wrapper").offsetHeight;

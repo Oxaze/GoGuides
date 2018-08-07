@@ -1,9 +1,13 @@
 <template>
   <div class="news">
-    <img v-bind:src="imageUrl" alt="thumbnail" class="news__img">
+    <router-link :to="id">
+      <img v-bind:src="imageUrl" alt="thumbnail" class="news__img">
+    </router-link>
     <div class="news__wrapper">
-          <h3 class="news__heading">{{ title }}</h3>
-          <p>News  •  {{ formattedDate }}</p>
+      <router-link to="" style="text-decoration: none;">
+        <h3 class="news__heading">{{ title }}</h3>  
+      </router-link>
+      <p>News  •  {{ formattedDate }}</p>
     </div>
   </div>
 </template>

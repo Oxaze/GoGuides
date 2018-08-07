@@ -4,6 +4,7 @@ import Router from "vue-router";
 
 import Home from "./views/Home.vue";
 import Guides from "./views/Guides.vue"
+import Article from "./views/Article.vue"
 
 Vue.use(Router);
 
@@ -18,6 +19,11 @@ export default new Router({
 			path: "/guides",
 			name: "guides",
 			component: Guides,
+		},
+		{
+			path: "/news",
+			name: "article",
+			component: Article,
 		}
 	],
 });
