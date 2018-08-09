@@ -65,8 +65,12 @@ body {
   text-decoration: none;
 }
 
+.nav__item > .router-link-active {
+  text-decoration: underline;
+}
+
 // Fake View
-.home {
+.main-wrapper {
   margin-top: -0.8rem;
 }
 

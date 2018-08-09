@@ -1,33 +1,27 @@
 <template>
-  <div class="news">
-    <router-link :to="`news/${id}`">
-      <img v-bind:src="imageUrl" alt="thumbnail" class="news__img">
-    </router-link>
-    <div class="news__wrapper">
-      <router-link to="" style="text-decoration: none;">
-        <h3 class="news__heading">{{ title }}</h3>  
-      </router-link>
-      <p>News  •  {{ formattedDate }}</p>
-    </div>
+  <div class="main-wrapper">
+      <p>{{ title }}</p>
+      <p>{{ newsText }}</p>
   </div>
-</template>
+</template> 
 
 <script>
+import { remove } from "30-seconds-of-code/dist/_30s.es5.min.js";
 import { createClient } from "@/contentful.js";
 const client = createClient();
 
 export default {
-  name: "News",
-  props: {
-    id: String
-  },
+  name: "news-article",
   mounted() {
     this.fetchContent();
   },
   data() {
     return {
+      id: this.$route.params.id,
       title: null,
       imageUrl: null,
+      newsText: null,
+      author: null,
       releaseDate: null
     };
   },
@@ -38,17 +32,12 @@ export default {
         .then(async entry => {
           this.title = await entry.fields.title;
           this.imageUrl = await entry.fields.imageUrl;
+          this.newsText = await entry.fields.newsText;
+          this.author = await entry.fields.author;
           this.releaseDate = await entry.fields.releaseDate;
         })
         .catch(err => console.error(err));
     }
-  },
-  computed: {
-    formattedDate() {
-      let d = new Date(Date.parse(this.releaseDate));
-      return d.toLocaleDateString("de-DE");
-    }
   }
 };
 </script>
-

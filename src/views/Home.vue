@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="main-wrapper">
     <div class="news-block">
 
       <img class="parallax" src="https://res.cloudinary.com/yrfhccre/image/upload/h_1080/v1532900285/GoGuides/header-bg.jpg" />
