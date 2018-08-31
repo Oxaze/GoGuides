@@ -18,29 +18,45 @@ export class ContentfulHandler {
 		this.client = createClient();
 	}
 
-	getNewsIds(lim) {
+	// getNewsIds(lim) {
+	// 	const ids = {
+	// 		all: [],
+	// 		f1: [],
+	// 		f2: [],
+	// 	};
+
+	// 	this.client
+	// 		.getEntries({
+	// 			limit: lim,
+	// 			order: "-sys.createdAt",
+	// 			content_type: "news",
+	// 		})
+	// 		.then(entries => {
+	// 			entries.items.forEach(async entry => {
+	// 				if (entry.sys.id) {
+	// 					await ids.all.push(entry.sys.id);
+	// 				}
+	// 			});
+	// 			ids.f1 = ids.all.filter((value, index) => index % 2 === 0);
+	// 			ids.f2 = ids.all.filter((value, index) => index % 2 !== 0);
+	// 		})
+	// 		.catch(err => console.error(err));
+	// 	return ids;
+	// }
+
+	static getNewsIds() {
 		const ids = {
 			all: [],
 			f1: [],
 			f2: [],
 		};
+		const allEntries = JSON.parse(window.localStorage.getItem("contentfulEntries"));
 
-		this.client
-			.getEntries({
-				limit: lim,
-				order: "-sys.createdAt",
-				content_type: "news",
-			})
-			.then(entries => {
-				entries.items.forEach(async entry => {
-					if (entry.sys.id) {
-						await ids.all.push(entry.sys.id);
-					}
-				});
-				ids.f1 = ids.all.filter((value, index) => index % 2 === 0);
-				ids.f2 = ids.all.filter((value, index) => index % 2 !== 0);
-			})
-			.catch(err => console.error(err));
+		const newsEntries = allEntries.filter(el => el.sys.contentType.sys.id === "news");
+		ids.all = newsEntries.map(el => el.sys.id);
+		ids.f1 = ids.all.filter((value, index) => index % 2 === 0);
+		ids.f2 = ids.all.filter((value, index) => index % 2 !== 0);
+
 		return ids;
 	}
 
@@ -67,27 +83,45 @@ export class ContentfulHandler {
 	}
 
 	syncNews() {
-		const syncToken = window.localStorage.getItem("contentfulSyncToken");
-		if (!syncToken) {
-			this.client.sync({ initial: true }).then(res => {
-				console.log("Entries fetched without sync token:", res.entries);
+		return new Promise((resolve, reject) => {
+			const syncToken = window.localStorage.getItem("contentfulSyncToken");
 
-				// @ts-ignore
-				const responseObj = JSON.parse(res.stringifySafe());
-				const { entries } = responseObj;
-				window.localStorage.setItem("contentfulEntries", JSON.stringify(entries));
+			if (!syncToken) {
+				this.client.sync({ initial: true }).then(res => {
+					console.log("Entries fetched without sync token:", res.entries);
 
-				window.localStorage.setItem("contentfulSyncToken", res.nextSyncToken);
-			});
-		}
-		if (syncToken) {
-			this.client.sync({ nextSyncToken: syncToken }).then(res => {
-				console.log("New entries fetched WITH sync token:", res.entries);
-				console.log("Deleted entries fetched WITH sync token:", res.deletedEntries);
+					// @ts-ignore
+					const responseObj = JSON.parse(res.stringifySafe());
+					const { entries } = responseObj;
+					window.localStorage.setItem("contentfulEntries", JSON.stringify(entries));
 
-				window.localStorage.setItem("contentfulSyncToken", res.nextSyncToken);
-			});
-		}
+					window.localStorage.setItem("contentfulSyncToken", res.nextSyncToken);
+
+					if (res) {
+						resolve(res);
+					}
+					if (!res) {
+						reject(new Error("No entries in storage"));
+					}
+				});
+			}
+
+			if (syncToken) {
+				this.client.sync({ nextSyncToken: syncToken }).then(res => {
+					console.log("New entries fetched WITH sync token:", res.entries);
+					console.log("Deleted entries fetched WITH sync token:", res.deletedEntries);
+
+					window.localStorage.setItem("contentfulSyncToken", res.nextSyncToken);
+
+					if (res) {
+						resolve(res);
+					}
+					if (!res) {
+						reject(new Error("No entries in storage"));
+					}
+				});
+			}
+		});
 	}
 }
 

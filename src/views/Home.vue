@@ -21,7 +21,7 @@
 <script>
 import News from "@/components/News.vue";
 
-import { cData } from "@/contentful.js";
+import { cData, ContentfulHandler } from "@/contentful.js";
 import Parallax from "scroll-parallax/dist/Parallax.min.js";
 window.onload = () => {
   const p = new Parallax(".parallax", {
@@ -53,9 +53,27 @@ export default {
     };
   },
   methods: {
-    fetchContent() {
-      cData.syncNews();
-      this.ids = cData.getNewsIds(4);
+    async fetchContent() {
+      cData
+        .syncNews()
+        .then(() => {
+          console.log("all good");
+          this.ids = ContentfulHandler.getNewsIds();
+        })
+        .catch(err => {
+          console.error(err);
+        });
+
+      // cData
+      //   .syncNews()
+      //   .then(() => {
+      //     console.log("all good");
+      //   })
+      //   .catch(err => {
+      //     console.error(err);
+      //   });
+      // this.ids = ContentfulHandler.getNewsIds();
+      // this.ids = cData.getNewsIds(4);
     }
   }
 };
