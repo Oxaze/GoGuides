@@ -21,9 +21,7 @@
 <script>
 import News from "@/components/News.vue";
 
-import { remove } from "30-seconds-of-code/dist/_30s.es5.min.js";
 import { cData } from "@/contentful.js";
-
 import Parallax from "scroll-parallax/dist/Parallax.min.js";
 window.onload = () => {
   const p = new Parallax(".parallax", {
@@ -56,7 +54,7 @@ export default {
   },
   methods: {
     fetchContent() {
-      this.ids = cData.getPosts(4);
+      this.ids = cData.getNewsIds(4);
     }
   }
 };

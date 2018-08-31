@@ -16,36 +16,64 @@ export const client = createClient();
 export class ContentfulHandler {
 	constructor() {
 		this.client = createClient();
-		this.ids = {
+	}
+
+	getNewsIds(lim) {
+		const ids = {
 			all: [],
 			f1: [],
 			f2: [],
 		};
-	}
 
-	getPosts(lim) {
 		this.client
 			.getEntries({
 				limit: lim,
 				order: "-sys.createdAt",
+				content_type: "news",
 			})
 			.then(entries => {
 				entries.items.forEach(async entry => {
 					if (entry.sys.id) {
-						await this.ids.all.push(entry.sys.id);
+						await ids.all.push(entry.sys.id);
 					}
 				});
-				this.splitIds();
+				ids.f1 = ids.all.filter((value, index) => index % 2 === 0);
+				ids.f2 = ids.all.filter((value, index) => index % 2 !== 0);
 			})
 			.catch(err => console.error(err));
-		return this.ids;
+		return ids;
 	}
 
-	splitIds() {
-		this.ids.f1 = this.ids.all.filter((value, index) => index % 2 === 0);
-		this.ids.f2 = remove(this.ids.all, n => this.ids.all.indexOf(n) % 2 !== 0);
-		this.ids.all = this.ids.f1.concat(this.ids.f2);
+	getNews(id) {
+		const data = {
+			title: null,
+			imageUrl: null,
+			newsText: null,
+			author: null,
+			releaseDate: null,
+		};
+
+		this.client
+			.getEntry(id)
+			.then(async entry => {
+				data.title = await entry.fields.title;
+				data.imageUrl = await entry.fields.imageUrl;
+				data.newsText = await entry.fields.newsText;
+				data.author = await entry.fields.author;
+				data.releaseDate = await entry.fields.releaseDate;
+			})
+			.catch(err => console.error(err));
+		return data;
 	}
+
+	// getSyncedNews() {
+	// 	const isTru = true;
+	// 	if (isTru) {
+	// 		this.client.sync({ initial: true }).then(async res => {
+	// 			console.log(res.entries);
+	// 		});
+	// 	}
+	// }
 }
 
 export const cData = new ContentfulHandler();
