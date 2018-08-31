@@ -54,6 +54,7 @@ export default {
   },
   methods: {
     fetchContent() {
+      cData.syncNews();
       this.ids = cData.getNewsIds(4);
     }
   }

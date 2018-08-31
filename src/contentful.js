@@ -66,14 +66,29 @@ export class ContentfulHandler {
 		return data;
 	}
 
-	// getSyncedNews() {
-	// 	const isTru = true;
-	// 	if (isTru) {
-	// 		this.client.sync({ initial: true }).then(async res => {
-	// 			console.log(res.entries);
-	// 		});
-	// 	}
-	// }
+	syncNews() {
+		const syncToken = window.localStorage.getItem("contentfulSyncToken");
+		if (!syncToken) {
+			this.client.sync({ initial: true }).then(res => {
+				console.log("Entries fetched without sync token:", res.entries);
+
+				// @ts-ignore
+				const responseObj = JSON.parse(res.stringifySafe());
+				const { entries } = responseObj;
+				window.localStorage.setItem("contentfulEntries", JSON.stringify(entries));
+
+				window.localStorage.setItem("contentfulSyncToken", res.nextSyncToken);
+			});
+		}
+		if (syncToken) {
+			this.client.sync({ nextSyncToken: syncToken }).then(res => {
+				console.log("New entries fetched WITH sync token:", res.entries);
+				console.log("Deleted entries fetched WITH sync token:", res.deletedEntries);
+
+				window.localStorage.setItem("contentfulSyncToken", res.nextSyncToken);
+			});
+		}
+	}
 }
 
 export const cData = new ContentfulHandler();
