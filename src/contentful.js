@@ -87,39 +87,34 @@ export class ContentfulHandler {
 			const syncToken = window.localStorage.getItem("contentfulSyncToken");
 
 			if (!syncToken) {
-				this.client.sync({ initial: true }).then(res => {
-					console.log("Entries fetched without sync token:", res.entries);
+				this.client
+					.sync({ initial: true })
+					.then(res => {
+						// @ts-ignore
+						const responseObj = JSON.parse(res.stringifySafe());
+						const { entries } = responseObj;
+						window.localStorage.setItem("contentfulEntries", JSON.stringify(entries));
 
-					// @ts-ignore
-					const responseObj = JSON.parse(res.stringifySafe());
-					const { entries } = responseObj;
-					window.localStorage.setItem("contentfulEntries", JSON.stringify(entries));
+						window.localStorage.setItem("contentfulSyncToken", res.nextSyncToken);
 
-					window.localStorage.setItem("contentfulSyncToken", res.nextSyncToken);
-
-					if (res) {
-						resolve(res);
-					}
-					if (!res) {
-						reject(new Error("No entries in storage"));
-					}
-				});
+						return res ? resolve(res) : reject(new Error("No entries in storage"));
+					})
+					.catch(err => {
+						reject(err);
+					});
 			}
 
 			if (syncToken) {
-				this.client.sync({ nextSyncToken: syncToken }).then(res => {
-					console.log("New entries fetched WITH sync token:", res.entries);
-					console.log("Deleted entries fetched WITH sync token:", res.deletedEntries);
+				this.client
+					.sync({ nextSyncToken: syncToken })
+					.then(res => {
+						window.localStorage.setItem("contentfulSyncToken", res.nextSyncToken);
 
-					window.localStorage.setItem("contentfulSyncToken", res.nextSyncToken);
-
-					if (res) {
-						resolve(res);
-					}
-					if (!res) {
-						reject(new Error("No entries in storage"));
-					}
-				});
+						return res ? resolve(res) : reject(new Error("No entries in storage"));
+					})
+					.catch(err => {
+						reject(err);
+					});
 			}
 		});
 	}

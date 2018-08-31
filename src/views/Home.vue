@@ -57,23 +57,11 @@ export default {
       cData
         .syncNews()
         .then(() => {
-          console.log("all good");
           this.ids = ContentfulHandler.getNewsIds();
         })
         .catch(err => {
           console.error(err);
         });
-
-      // cData
-      //   .syncNews()
-      //   .then(() => {
-      //     console.log("all good");
-      //   })
-      //   .catch(err => {
-      //     console.error(err);
-      //   });
-      // this.ids = ContentfulHandler.getNewsIds();
-      // this.ids = cData.getNewsIds(4);
     }
   }
 };
