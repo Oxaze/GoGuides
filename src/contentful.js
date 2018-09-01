@@ -1,4 +1,4 @@
-import contentful from "contentful";
+const contentful = require("contentful");
 
 export function createClient() {
 	return contentful.createClient({
@@ -29,7 +29,7 @@ export class ContentfulHandler {
 	}
 
 	static getNews(id) {
-		const data = {
+		const newsData = {
 			title: null,
 			imageUrl: null,
 			newsText: null,
@@ -39,12 +39,12 @@ export class ContentfulHandler {
 
 		const allEntries = JSON.parse(window.localStorage.getItem("contentfulEntries"));
 		const news = allEntries.find(el => el.sys.id === id);
-		data.title = news.fields.title;
-		data.imageUrl = news.fields.imageUrl;
-		data.newsText = news.fields.newsText;
-		data.author = news.fields.author;
-		data.releaseDate = news.fields.releaseDate;
-		return data;
+		newsData.title = news.fields.title["en-US"];
+		newsData.imageUrl = news.fields.imageUrl["en-US"];
+		newsData.newsText = news.fields.newsText["en-US"];
+		newsData.author = news.fields.author;
+		newsData.releaseDate = news.fields.releaseDate["en-US"];
+		return newsData;
 	}
 
 	syncNews() {
@@ -53,7 +53,7 @@ export class ContentfulHandler {
 
 			if (!syncToken) {
 				this.client
-					.sync({ initial: true })
+					.sync({ initial: true, content_type: "news" })
 					.then(res => {
 						// @ts-ignore
 						const responseObj = JSON.parse(res.stringifySafe());

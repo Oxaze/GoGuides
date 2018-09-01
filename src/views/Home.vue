@@ -23,46 +23,47 @@ import News from "@/components/News.vue";
 
 import { cData, ContentfulHandler } from "@/contentful.js";
 import Parallax from "scroll-parallax/dist/Parallax.min.js";
+
 window.onload = () => {
-  const p = new Parallax(".parallax", {
-    intensity: 80
-  });
-  p.on("image:loaded", i => {
-    let nbw = document.querySelector(".news-block__wrapper").offsetHeight;
-    let all = nbw + 48 + 38 + 48;
-    let hc = (document.querySelector(".news-block").style.height = all + "px");
-  });
-  p.init();
+	const p = new Parallax(".parallax", {
+		intensity: 80,
+	});
+	p.on("image:loaded", i => {
+		const nbw = document.querySelector(".news-block__wrapper").offsetHeight;
+		const all = nbw + 48 + 38 + 48;
+		const hc = (document.querySelector(".news-block").style.height = `${all}px`);
+	});
+	p.init();
 };
 
 export default {
-  name: "home",
-  components: {
-    News
-  },
-  mounted() {
-    this.fetchContent();
-  },
-  data() {
-    return {
-      ids: {
-        all: [],
-        f1: [],
-        f2: []
-      }
-    };
-  },
-  methods: {
-    async fetchContent() {
-      cData
-        .syncNews()
-        .then(() => {
-          this.ids = ContentfulHandler.getNewsIds();
-        })
-        .catch(err => {
-          console.error(err);
-        });
-    }
-  }
+	name: "home",
+	components: {
+		News,
+	},
+	mounted() {
+		this.fetchContent();
+	},
+	data() {
+		return {
+			ids: {
+				all: new Array(4),
+				f1: [],
+				f2: [],
+			},
+		};
+	},
+	methods: {
+		fetchContent() {
+			cData
+				.syncNews()
+				.then(() => {
+					this.ids = ContentfulHandler.getNewsIds();
+				})
+				.catch(err => {
+					console.error(err);
+				});
+		},
+	},
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="main-wrapper">
-      <p>{{ data.title }}</p>
-      <p>{{ data.newsText }}</p>
+      <p>{{ newsData.title }}</p>
+      <p>{{ newsData.newsText }}</p>
   </div>
 </template> 
 
@@ -17,7 +17,7 @@ export default {
 	data() {
 		return {
 			id: this.$route.params.id,
-			data: {
+			newsData: {
 				title: null,
 				imageUrl: null,
 				newsText: null,
@@ -28,7 +28,7 @@ export default {
 	},
 	methods: {
 		fetchContent() {
-			this.data = ContentfulHandler.getNews(this.id);
+			this.newsData = ContentfulHandler.getNews(this.id);
 		},
 	},
 };
