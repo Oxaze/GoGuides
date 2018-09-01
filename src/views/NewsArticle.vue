@@ -6,7 +6,7 @@
 </template> 
 
 <script>
-import { cData } from "@/contentful.js";
+import { ContentfulHandler } from "@/contentful.js";
 
 export default {
   name: "news-article",
@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     fetchContent() {
-      this.data = cData.getNews(this.id);
+      this.data = ContentfulHandler.getNews(this.id);
     }
   }
 };

@@ -18,32 +18,6 @@ export class ContentfulHandler {
 		this.client = createClient();
 	}
 
-	// getNewsIds(lim) {
-	// 	const ids = {
-	// 		all: [],
-	// 		f1: [],
-	// 		f2: [],
-	// 	};
-
-	// 	this.client
-	// 		.getEntries({
-	// 			limit: lim,
-	// 			order: "-sys.createdAt",
-	// 			content_type: "news",
-	// 		})
-	// 		.then(entries => {
-	// 			entries.items.forEach(async entry => {
-	// 				if (entry.sys.id) {
-	// 					await ids.all.push(entry.sys.id);
-	// 				}
-	// 			});
-	// 			ids.f1 = ids.all.filter((value, index) => index % 2 === 0);
-	// 			ids.f2 = ids.all.filter((value, index) => index % 2 !== 0);
-	// 		})
-	// 		.catch(err => console.error(err));
-	// 	return ids;
-	// }
-
 	static getNewsIds() {
 		const ids = {
 			all: [],
@@ -60,7 +34,7 @@ export class ContentfulHandler {
 		return ids;
 	}
 
-	getNews(id) {
+	static getNews(id) {
 		const data = {
 			title: null,
 			imageUrl: null,
@@ -69,16 +43,13 @@ export class ContentfulHandler {
 			releaseDate: null,
 		};
 
-		this.client
-			.getEntry(id)
-			.then(async entry => {
-				data.title = await entry.fields.title;
-				data.imageUrl = await entry.fields.imageUrl;
-				data.newsText = await entry.fields.newsText;
-				data.author = await entry.fields.author;
-				data.releaseDate = await entry.fields.releaseDate;
-			})
-			.catch(err => console.error(err));
+		const allEntries = JSON.parse(window.localStorage.getItem("contentfulEntries"));
+		const news = allEntries.find(el => el.sys.id === id);
+		data.title = news.fields.title;
+		data.imageUrl = news.fields.imageUrl;
+		data.newsText = news.fields.newsText;
+		data.author = news.fields.author;
+		data.releaseDate = news.fields.releaseDate;
 		return data;
 	}
 
