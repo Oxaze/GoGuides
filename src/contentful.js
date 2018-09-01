@@ -1,6 +1,4 @@
-import { remove } from "30-seconds-of-code/dist/_30s.es5.min.js";
-
-const contentful = require("contentful");
+import contentful from "contentful";
 
 export function createClient() {
 	return contentful.createClient({
@@ -8,10 +6,6 @@ export function createClient() {
 		accessToken: "666b9beb820f58595efd23cb53ed8fadba040ee27f88917737137f97231cbde3",
 	});
 }
-
-export const client = createClient();
-
-// Handler Class
 
 export class ContentfulHandler {
 	constructor() {
@@ -92,5 +86,3 @@ export class ContentfulHandler {
 }
 
 export const cData = new ContentfulHandler();
-
-// -> https://www.contentful.com/developers/docs/javascript/tutorials/using-js-cda-sdk/
