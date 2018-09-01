@@ -3,9 +3,10 @@ import Vue from "vue";
 import Router from "vue-router";
 
 import Home from "./views/Home.vue";
-import NewsArticle from "./views/NewsArticle.vue"
+import NewsArticle from "./views/NewsArticle.vue";
 
 import { createClient } from "@/contentful.js";
+
 const client = createClient();
 
 function parseID(params) {
@@ -22,6 +23,7 @@ function parseID(params) {
 Vue.use(Router);
 
 export default new Router({
+	// mode: "history",
 	routes: [
 		{
 			path: "/",
@@ -36,6 +38,8 @@ export default new Router({
 		{
 			path: "/news/",
 			redirect: "/",
-		}
+		},
 	],
 });
+
+// UPDATE: https://router.vuejs.org/guide/essentials/history-mode.html
