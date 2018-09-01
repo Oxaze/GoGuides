@@ -1,5 +1,5 @@
 <template>
-  <div class="news news--skeleton">
+  <div class="news">
 		<div v-if="newsData.imageUrl">
     <router-link :to="`news/${id}`" class="news__img-link">
       <img v-bind:src="newsData.imageUrl" alt="thumbnail" class="news__img">
