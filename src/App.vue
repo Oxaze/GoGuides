@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <nprogress-container></nprogress-container>
     <nav class="nav">
       <div class="nav__wrapper">
         <h3 class="nav__logo"><router-link class="nav__link" :to="{ path: '/'}">GoGuides</router-link></h3>
@@ -23,4 +24,15 @@
   </div>
 </template>
 
-<style src="./styles/main.scss" lang="scss"></style>
+<style src="./styles/main.scss" lang="scss">
+</style>
+
+<script>
+import NprogressContainer from "vue-nprogress/src/NprogressContainer.vue";
+
+export default {
+	components: {
+		NprogressContainer,
+	},
+};
+</script>

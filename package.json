@@ -17,6 +17,7 @@
     "register-service-worker": "^1.0.0",
     "scroll-parallax": "^2.1.0",
     "vue": "^2.5.16",
+    "vue-nprogress": "^0.1.5",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

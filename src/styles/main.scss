@@ -21,6 +21,10 @@ body {
 }
 
 // Navigation
+#nprogress .bar {
+  background: $color-primary-sub;
+}
+
 .nav {
   position: relative;
   background-color: $color-white;
