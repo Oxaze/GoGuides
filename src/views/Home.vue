@@ -10,13 +10,11 @@
 		</div>
 
 		<parallax :sectionHeight="120">
-			<!-- <img src="https://res.cloudinary.com/yrfhccre/image/upload/f_auto,q_auto:best,r_0/v1535827389/GoGuides/gg-bg" alt="Background Image"> -->
 			<img 
 			srcset="https://res.cloudinary.com/yrfhccre/image/upload/f_auto%2Cq_auto%2Cw_600%2Cfl_progressive/v1535831110/GoGuides/background-4k 600w,
 			https://res.cloudinary.com/yrfhccre/image/upload/f_auto%2Cq_auto:good%2Cw_900%2Cfl_progressive/v1535831110/GoGuides/background-4k 900w,
 			https://res.cloudinary.com/yrfhccre/image/upload/f_auto%2Cq_auto:best%2Cfl_progressive/v1535831110/GoGuides/background-4k 1200w"
 			src="https://res.cloudinary.com/yrfhccre/image/upload/f_auto,q_auto/v1535831110/GoGuides/background-4k" sizes="100vw" alt="Background Image">
-			<!-- <img src="https://res.cloudinary.com/yrfhccre/image/upload/f_auto,q_auto:best/v1535831110/GoGuides/gg-bg" alt="Test" srcset=""> -->
 		</parallax>
 	</div>
 </template> 

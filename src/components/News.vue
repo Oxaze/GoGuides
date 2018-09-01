@@ -1,6 +1,7 @@
 <template>
   <div class="news news--skeleton">
-    <router-link :to="`news/${id}`">
+		<div v-if="newsData.imageUrl">
+    <router-link :to="`news/${id}`" class="news__img-link">
       <img v-bind:src="newsData.imageUrl" alt="thumbnail" class="news__img">
     </router-link>
     <div class="news__wrapper">
@@ -9,6 +10,7 @@
       </router-link>
       <p>News  •  {{ formattedDate }}</p>
     </div>
+		</div>
   </div>
 </template>
 
