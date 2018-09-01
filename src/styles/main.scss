@@ -68,42 +68,21 @@ body {
   text-decoration: underline;
 }
 
-// Fake View
-
-// .news-block {
-//   background: linear-gradient($color-primary, $color-primary-sub);
-//   overflow: hidden;
-//   position: relative;
-//   width: 100vw;
-// }
-
-// .news-block__wrapper {
-//   position: absolute;
-//   top: 3.8rem;
-//   left: 25%;
-// }
-
-// .parallax {
-//   mix-blend-mode: multiply;
-//   opacity: 0.35;
-//   width: 100vw;
-// }
-
-// .fakeView__box {
-//   height: 300px;
-//   background-color: $color-white;
-// }
+// Home View
 
 .home-view {
   position: relative;
   overflow: hidden;
-  // height: 1500px;
 }
 
 .news-block {
   position: absolute;
   top: 3rem;
   left: 25%;
+}
+
+.Masthead__image > img {
+  object-position: left !important;
 }
 
 // News Component
