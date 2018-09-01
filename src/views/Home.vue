@@ -28,10 +28,10 @@ window.onload = () => {
 	const p = new Parallax(".parallax", {
 		intensity: 80,
 	});
-	p.on("image:loaded", i => {
+	p.on("image:loaded", () => {
 		const nbw = document.querySelector(".news-block__wrapper").offsetHeight;
 		const all = nbw + 48 + 38 + 48;
-		const hc = (document.querySelector(".news-block").style.height = `${all}px`);
+		document.querySelector(".news-block").style.height = `${all}px`;
 	});
 	p.init();
 };
