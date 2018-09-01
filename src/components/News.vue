@@ -8,7 +8,7 @@
       <router-link to="" style="text-decoration: none;">
         <h3 class="news__heading">{{ newsData.title }}</h3>  
       </router-link>
-      <p>News  •  {{ formattedDate }}</p>
+      <p>{{ uppercasedContentType }}  •  {{ formattedDate }}</p>
     </div>
 		</div>
   </div>
@@ -33,6 +33,7 @@ export default {
 				newsText: null,
 				author: null,
 				releaseDate: null,
+				contentType: null,
 			},
 		};
 	},
@@ -45,6 +46,10 @@ export default {
 		formattedDate() {
 			const d = new Date(Date.parse(this.newsData.releaseDate));
 			return d.toLocaleDateString("de-DE");
+		},
+		uppercasedContentType() {
+			const word = this.newsData.contentType;
+			return word.charAt(0).toUpperCase() + word.slice(1);
 		},
 	},
 };

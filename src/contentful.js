@@ -24,7 +24,6 @@ export class ContentfulHandler {
 		ids.all = newsEntries.slice(0, 4).map(el => el.sys.id);
 		ids.f1 = ids.all.filter((value, index) => index % 2 === 0);
 		ids.f2 = ids.all.filter((value, index) => index % 2 !== 0);
-
 		return ids;
 	}
 
@@ -35,6 +34,7 @@ export class ContentfulHandler {
 			newsText: null,
 			author: null,
 			releaseDate: null,
+			contentType: null,
 		};
 
 		const allEntries = JSON.parse(window.localStorage.getItem("contentfulEntries"));
@@ -44,6 +44,7 @@ export class ContentfulHandler {
 		newsData.newsText = news.fields.newsText["en-US"];
 		newsData.author = news.fields.author;
 		newsData.releaseDate = news.fields.releaseDate["en-US"];
+		newsData.contentType = news.sys.contentType.sys.id;
 		return newsData;
 	}
 
