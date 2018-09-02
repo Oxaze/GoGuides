@@ -31,5 +31,9 @@ export default {
 			this.newsData = ContentfulHandler.getNews(this.id);
 		},
 	},
+	beforeRouteUpdate(to, from, next) {
+		this.id = to.params.id;
+		next();
+	},
 };
 </script>

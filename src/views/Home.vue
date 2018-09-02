@@ -1,13 +1,21 @@
 <template>
 	<div class="home-view">
-		<div class="news-block">
-			<div>
-				<News v-for="id in ids.f1" :key="id" v-bind:id="id"></News>
+		<v-wait for="newsLoad">
+			    <template slot="waiting">
+					<div>
+					Loading the list...
+					</div>
+				</template>
+			
+			<div class="news-block">
+				<div>
+					<News v-for="id in ids.f1" :key="id" v-bind:id="id"></News>
+				</div>
+				<div>
+					<News v-for="id in ids.f2" :key="id" v-bind:id="id"></News>
+				</div>
 			</div>
-			<div>
-				<News v-for="id in ids.f2" :key="id" v-bind:id="id"></News>
-			</div>
-		</div>
+		</v-wait>
 
 		<parallax :sectionHeight="120">
 			<img 
@@ -31,7 +39,7 @@ export default {
 		News,
 		Parallax,
 	},
-	mounted() {
+	created() {
 		this.fetchContent();
 	},
 	updated() {
@@ -48,14 +56,16 @@ export default {
 	},
 	methods: {
 		fetchContent() {
+			this.$wait.start("newsLoad");
 			cData
 				.syncNews()
 				.then(() => {
-					this.ids = ContentfulHandler.getNewsIds();
+					this.ids = ContentfulHandler.getNewsIds(4);
 				})
 				.catch(err => {
 					console.error(err);
 				});
+			this.$wait.end("newsLoad");
 		},
 		resizeParallax() {
 			const nbw = document.querySelector(".news-block").offsetHeight;

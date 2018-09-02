@@ -5,8 +5,8 @@
       <img v-bind:src="newsData.imageUrl" alt="thumbnail" class="news__img">
     </router-link>
     <div class="news__wrapper">
-      <router-link to="" style="text-decoration: none;">
-        <h3 class="news__heading">{{ newsData.title }}</h3>  
+      <router-link :to="`news/${id}`" class="news__heading">
+        <h3>{{ newsData.title }}</h3>  
       </router-link>
       <p>{{ uppercasedContentType }}  •  {{ formattedDate }}</p>
     </div>
@@ -16,6 +16,8 @@
 
 <script>
 import { ContentfulHandler } from "@/contentful.js";
+
+// TODO: Add animation
 
 export default {
 	name: "News",

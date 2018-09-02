@@ -12,7 +12,7 @@ export class ContentfulHandler {
 		this.client = createClient();
 	}
 
-	static getNewsIds(lim) {
+	static getNewsIds(lim = 1) {
 		const ids = {
 			all: [],
 			f1: [],
@@ -21,9 +21,12 @@ export class ContentfulHandler {
 		const allEntries = JSON.parse(window.localStorage.getItem("contentfulEntries"));
 
 		const newsEntries = allEntries.filter(el => el.sys.contentType.sys.id === "news");
-		ids.all = newsEntries.slice(0, 4).map(el => el.sys.id);
+		// setTimeout(() => {
+		ids.all = newsEntries.slice(0, lim).map(el => el.sys.id);
 		ids.f1 = ids.all.filter((value, index) => index % 2 === 0);
 		ids.f2 = ids.all.filter((value, index) => index % 2 !== 0);
+		// }, 3000);
+
 		return ids;
 	}
 
