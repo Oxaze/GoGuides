@@ -10,8 +10,8 @@
 import { ContentfulHandler } from "@/contentful.js";
 
 export default {
-	name: "news-article",
-	created() {
+	name: "guide",
+	mounted() {
 		this.fetchContent();
 	},
 	data() {
