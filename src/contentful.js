@@ -12,52 +12,13 @@ export class ContentfulHandler {
 		this.client = createClient();
 	}
 
-	static getNewsIds(lim = 1) {
-		const ids = {
-			all: [],
-			f1: [],
-			f2: [],
-		};
-		const allEntries = JSON.parse(window.localStorage.getItem("contentfulEntries"));
-
-		const newsEntries = allEntries.filter(el => el.sys.contentType.sys.id === "news");
-		// setTimeout(() => {
-		ids.all = newsEntries.slice(0, lim).map(el => el.sys.id);
-		ids.f1 = ids.all.filter((value, index) => index % 2 === 0);
-		ids.f2 = ids.all.filter((value, index) => index % 2 !== 0);
-		// }, 3000);
-
-		return ids;
-	}
-
-	static getNews(id) {
-		const newsData = {
-			title: null,
-			imageUrl: null,
-			newsText: null,
-			author: null,
-			releaseDate: null,
-			contentType: null,
-		};
-
-		const allEntries = JSON.parse(window.localStorage.getItem("contentfulEntries"));
-		const news = allEntries.find(el => el.sys.id === id);
-		newsData.title = news.fields.title["en-US"];
-		newsData.imageUrl = news.fields.imageUrl["en-US"];
-		newsData.newsText = news.fields.newsText["en-US"];
-		newsData.author = news.fields.author;
-		newsData.releaseDate = news.fields.releaseDate["en-US"];
-		newsData.contentType = news.sys.contentType.sys.id;
-		return newsData;
-	}
-
-	syncNews() {
+	syncData(type) {
 		return new Promise((resolve, reject) => {
 			const syncToken = window.localStorage.getItem("contentfulSyncToken");
 
 			if (!syncToken) {
 				this.client
-					.sync({ initial: true, content_type: "news" })
+					.sync({ initial: true, content_type: type })
 					.then(res => {
 						// @ts-ignore
 						const responseObj = JSON.parse(res.stringifySafe());
@@ -87,6 +48,80 @@ export class ContentfulHandler {
 			}
 		});
 	}
+
+	getDataIds(lim = 1, type) {
+		const ids = {
+			all: [],
+			f1: [],
+			f2: [],
+		};
+		this.syncData("news")
+			.then(() => {
+				const allEntries = JSON.parse(window.localStorage.getItem("contentfulEntries"));
+
+				const newsEntries = allEntries.filter(el => el.sys.contentType.sys.id === type);
+				ids.all = newsEntries.slice(0, lim).map(el => el.sys.id);
+				ids.f1 = ids.all.filter((value, index) => index % 2 === 0);
+				ids.f2 = ids.all.filter((value, index) => index % 2 !== 0);
+			})
+			.catch(err => {
+				console.error(err);
+			});
+
+		return ids;
+	}
+
+	static getBundleData(id) {
+		const cData = {
+			title: null,
+			imageUrl: null,
+			newsText: null,
+			author: null,
+			releaseDate: null,
+			contentType: null,
+		};
+
+		const allEntries = JSON.parse(window.localStorage.getItem("contentfulEntries"));
+		const news = allEntries.find(el => el.sys.id === id);
+
+		cData.title = news.fields.title["en-US"];
+		cData.imageUrl = news.fields.imageUrl["en-US"];
+		cData.newsText = news.fields.newsText["en-US"];
+		cData.author = news.fields.author;
+		cData.releaseDate = news.fields.releaseDate["en-US"];
+		cData.contentType = news.sys.contentType.sys.id;
+
+		return cData;
+	}
+
+	getSingleData(id, type) {
+		const cData = {
+			title: null,
+			imageUrl: null,
+			newsText: null,
+			author: null,
+			releaseDate: null,
+			contentType: null,
+		};
+
+		this.syncData(type)
+			.then(() => {
+				const allEntries = JSON.parse(window.localStorage.getItem("contentfulEntries"));
+				const news = allEntries.find(el => el.sys.id === id);
+
+				cData.title = news.fields.title["en-US"];
+				cData.imageUrl = news.fields.imageUrl["en-US"];
+				cData.newsText = news.fields.newsText["en-US"];
+				cData.author = news.fields.author;
+				cData.releaseDate = news.fields.releaseDate["en-US"];
+				cData.contentType = news.sys.contentType.sys.id;
+			})
+			.catch(err => {
+				console.error(err);
+			});
+
+		return cData;
+	}
 }
 
-export const cData = new ContentfulHandler();
+export const cDynamic = new ContentfulHandler();

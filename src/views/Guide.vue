@@ -1,23 +1,23 @@
 <template>
   <div class="main-wrapper">
-      <p>{{ newsData.title }}</p>
-      <p>{{ newsData.newsText }}</p>
+      <p>{{ cData.title }}</p>
+      <p>{{ cData.newsText }}</p>
   </div>
 </template> 
 
 <script>
 // eslint-disable-next-line
-import { ContentfulHandler } from "@/contentful.js";
+import { cDynamic } from "@/contentful.js";
 
 export default {
 	name: "guide",
-	mounted() {
+	created() {
 		this.fetchContent();
 	},
 	data() {
 		return {
 			id: this.$route.params.id,
-			newsData: {
+			cData: {
 				title: null,
 				imageUrl: null,
 				newsText: null,
@@ -28,7 +28,7 @@ export default {
 	},
 	methods: {
 		fetchContent() {
-			this.newsData = ContentfulHandler.getNews(this.id);
+			this.cData = cDynamic.getSingleData(this.id, "guide");
 		},
 	},
 	beforeRouteUpdate(to, from, next) {

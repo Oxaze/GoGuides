@@ -31,7 +31,7 @@
 import Parallax from "vue-parallaxy";
 
 import News from "@/components/News.vue";
-import { cData, ContentfulHandler } from "@/contentful.js";
+import { cDynamic } from "@/contentful.js";
 
 export default {
 	name: "home",
@@ -57,14 +57,7 @@ export default {
 	methods: {
 		fetchContent() {
 			this.$wait.start("newsLoad");
-			cData
-				.syncNews()
-				.then(() => {
-					this.ids = ContentfulHandler.getNewsIds(4);
-				})
-				.catch(err => {
-					console.error(err);
-				});
+			this.ids = cDynamic.getDataIds(4, "news");
 			this.$wait.end("newsLoad");
 		},
 		resizeParallax() {

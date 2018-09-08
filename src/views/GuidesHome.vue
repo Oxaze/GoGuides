@@ -6,13 +6,25 @@
 
 <script>
 // eslint-disable-next-line
-import { ContentfulHandler } from "@/contentful.js";
+import { cDynamic } from "@/contentful.js";
 
 export default {
 	name: "guides-home",
 	data() {
-		return {};
+		return {
+			ids: {
+				all: new Array(10),
+				f1: [],
+				f2: [],
+			},
+		};
 	},
-	methods: {},
+	methods: {
+		fetchContent() {
+			this.$wait.start("guidesLoad");
+			this.ids = cDynamic.getDataIds(10, "guide");
+			this.$wait.end("guidesLoad");
+		},
+	},
 };
 </script>

@@ -1,13 +1,13 @@
 <template>
   <div class="main-wrapper">
-      <p>{{ newsData.title }}</p>
-      <p>{{ newsData.newsText }}</p>
+      <p>{{ cData.title }}</p>
+      <p>{{ cData.newsText }}</p>
   </div>
 </template> 
 
 <script>
 // eslint-disable-next-line
-import { ContentfulHandler } from "@/contentful.js";
+import { cDynamic } from "@/contentful.js";
 
 export default {
 	name: "news-article",
@@ -17,18 +17,19 @@ export default {
 	data() {
 		return {
 			id: this.$route.params.id,
-			newsData: {
+			cData: {
 				title: null,
 				imageUrl: null,
 				newsText: null,
 				author: null,
 				releaseDate: null,
+				contentType: null,
 			},
 		};
 	},
 	methods: {
 		fetchContent() {
-			this.newsData = ContentfulHandler.getNews(this.id);
+			this.cData = cDynamic.getSingleData(this.id, "news");
 		},
 	},
 	beforeRouteUpdate(to, from, next) {

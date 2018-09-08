@@ -1,12 +1,12 @@
 <template>
   <div class="news">
-		<div v-if="newsData.imageUrl">
+		<div v-if="cData.imageUrl">
     <router-link :to="`news/${id}`" class="news__img-link">
-      <img v-bind:src="newsData.imageUrl" alt="thumbnail" class="news__img">
+      <img v-bind:src="cData.imageUrl" alt="thumbnail" class="news__img">
     </router-link>
     <div class="news__wrapper">
       <router-link :to="`news/${id}`" class="news__heading">
-        <h3>{{ newsData.title }}</h3>  
+        <h3>{{ cData.title }}</h3>  
       </router-link>
       <p>{{ uppercasedContentType }}  •  {{ formattedDate }}</p>
     </div>
@@ -29,7 +29,7 @@ export default {
 	},
 	data() {
 		return {
-			newsData: {
+			cData: {
 				title: null,
 				imageUrl: null,
 				newsText: null,
@@ -41,16 +41,16 @@ export default {
 	},
 	methods: {
 		fetchContent() {
-			this.newsData = ContentfulHandler.getNews(this.id);
+			this.cData = ContentfulHandler.getBundleData(this.id);
 		},
 	},
 	computed: {
 		formattedDate() {
-			const d = new Date(Date.parse(this.newsData.releaseDate));
+			const d = new Date(Date.parse(this.cData.releaseDate));
 			return d.toLocaleDateString("de-DE");
 		},
 		uppercasedContentType() {
-			const word = this.newsData.contentType;
+			const word = this.cData.contentType;
 			return word.charAt(0).toUpperCase() + word.slice(1);
 		},
 	},
