@@ -33,6 +33,7 @@ export default {
 	},
 	beforeRouteUpdate(to, from, next) {
 		this.id = to.params.id;
+		this.fetchContent();
 		next();
 	},
 };
