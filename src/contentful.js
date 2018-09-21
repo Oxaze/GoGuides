@@ -6,7 +6,7 @@ export function createClient() {
 		accessToken: "666b9beb820f58595efd23cb53ed8fadba040ee27f88917737137f97231cbde3",
 	});
 }
-
+console.log("res3");
 export class ContentfulHandler {
 	constructor() {
 		this.client = createClient();
@@ -26,6 +26,8 @@ export class ContentfulHandler {
 						window.localStorage.setItem("contentfulEntries", JSON.stringify(entries));
 
 						window.localStorage.setItem("contentfulSyncToken", res.nextSyncToken);
+
+						console.log("res1");
 
 						return res ? resolve(res) : reject(new Error("No entries in storage"));
 					})
@@ -55,8 +57,10 @@ export class ContentfulHandler {
 			f1: [],
 			f2: [],
 		};
+		console.log("res2");
 		this.syncData("news")
 			.then(() => {
+				console.log("res4");
 				const allEntries = JSON.parse(window.localStorage.getItem("contentfulEntries"));
 
 				const newsEntries = allEntries.filter(el => el.sys.contentType.sys.id === type);
@@ -72,6 +76,7 @@ export class ContentfulHandler {
 	}
 
 	static getBundleData(id) {
+		console.log("res5");
 		const cData = {
 			title: null,
 			imageUrl: null,
