@@ -9,15 +9,13 @@
 			
 			<div class="news-block">
 				<div>
-					<News v-for="id in ids.f1" :key="id" v-bind:id="id"></News>
+					<News v-for="id in newsIDs[0]" :key="id" v-bind:id="id"></News>
 				</div>
 				<div>
-					<News v-for="id in ids.f2" :key="id" v-bind:id="id"></News>
+					<News v-for="id in ids[1]" :key="id" v-bind:id="id"></News>
 				</div>
 			</div>
 		</v-wait>
-
-		<!-- {{lol}} -->
 
 		<parallax :sectionHeight="120">
 			<img 
@@ -32,7 +30,7 @@
 <script>
 import Parallax from "vue-parallaxy";
 import News from "@/components/News.vue";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
 	name: "home",
@@ -45,17 +43,17 @@ export default {
 			type: "news",
 			lim: 4,
 		});
+		this.ids = this.$store.getters.newsIDs;
 	},
 	updated() {
 		this.resizeParallax();
 	},
+	computed: {
+		...mapGetters(["newsIDs"]),
+	},
 	data() {
 		return {
-			ids: {
-				all: new Array(4),
-				f1: [],
-				f2: [],
-			},
+			ids: [],
 		};
 	},
 	methods: {

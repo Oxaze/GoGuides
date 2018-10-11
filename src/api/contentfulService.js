@@ -6,7 +6,7 @@ const client = contentful.createClient({
 });
 
 export default {
-	getData(type, lim) {
+	getEntries(type, lim) {
 		return new Promise((resolve, reject) => {
 			client
 				.getEntries({
