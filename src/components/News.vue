@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { ContentfulHandler } from "@/contentful.js";
+// import { ContentfulHandler } from "@/contentful.js";
 
 // TODO: Add animation
 

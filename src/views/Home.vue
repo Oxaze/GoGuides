@@ -17,6 +17,8 @@
 			</div>
 		</v-wait>
 
+		<!-- {{lol}} -->
+
 		<parallax :sectionHeight="120">
 			<img 
 			srcset="https://res.cloudinary.com/yrfhccre/image/upload/f_auto%2Cq_auto%2Cw_600%2Cfl_progressive/v1535831110/GoGuides/background-4k 600w,
@@ -29,9 +31,8 @@
 
 <script>
 import Parallax from "vue-parallaxy";
-
 import News from "@/components/News.vue";
-import { cDynamic } from "@/contentful.js";
+import { mapActions } from "vuex";
 
 export default {
 	name: "home",
@@ -40,7 +41,10 @@ export default {
 		Parallax,
 	},
 	created() {
-		this.fetchContent();
+		this.getEntries({
+			type: "news",
+			lim: 4,
+		});
 	},
 	updated() {
 		this.resizeParallax();
@@ -55,11 +59,12 @@ export default {
 		};
 	},
 	methods: {
-		fetchContent() {
-			this.$wait.start("newsLoad");
-			this.ids = cDynamic.getDataIds(4, "news");
-			this.$wait.end("newsLoad");
-		},
+		...mapActions(["getEntries"]),
+		// fetchContent() {
+		// 	// this.$wait.start("newsLoad");
+		// 	// this.ids = this.$store.state.news;
+		// 	// this.$wait.end("newsLoad");
+		// },
 		resizeParallax() {
 			const nbw = document.querySelector(".news-block").offsetHeight;
 			document.querySelector(".Masthead").style.height = `calc(${nbw}px + 6rem)`;

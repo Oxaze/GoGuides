@@ -7,7 +7,7 @@
 
 <script>
 // eslint-disable-next-line
-import { cDynamic } from "@/contentful.js";
+// import { cDynamic } from "@/contentful.js";
 
 export default {
 	name: "guide",
