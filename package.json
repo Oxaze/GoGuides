@@ -16,7 +16,6 @@
     "vue-nprogress": "^0.1.5",
     "vue-parallaxy": "^1.1.1",
     "vue-router": "^3.0.1",
-    "vue-wait": "^1.3.2",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

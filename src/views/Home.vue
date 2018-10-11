@@ -1,21 +1,13 @@
 <template>
 	<div class="home-view">
-		<v-wait for="newsLoad">
-			    <template slot="waiting">
-					<div>
-					Loading the list...
-					</div>
-				</template>
-			
-			<div class="news-block">
-				<div>
-					<News v-for="id in newsIDs[0]" :key="id" v-bind:id="id"></News>
-				</div>
-				<div>
-					<News v-for="id in ids[1]" :key="id" v-bind:id="id"></News>
-				</div>
+		<div class="news-block">
+			<div>
+				<News v-for="id in newsIDs[0]" :key="id" v-bind:id="id"></News>
 			</div>
-		</v-wait>
+			<div>
+				<News v-for="id in newsIDs[1]" :key="id" v-bind:id="id"></News>
+			</div>
+		</div>
 
 		<parallax :sectionHeight="120">
 			<img 
@@ -43,7 +35,6 @@ export default {
 			type: "news",
 			lim: 4,
 		});
-		this.ids = this.$store.getters.newsIDs;
 	},
 	updated() {
 		this.resizeParallax();
@@ -51,18 +42,8 @@ export default {
 	computed: {
 		...mapGetters(["newsIDs"]),
 	},
-	data() {
-		return {
-			ids: [],
-		};
-	},
 	methods: {
 		...mapActions(["getEntries"]),
-		// fetchContent() {
-		// 	// this.$wait.start("newsLoad");
-		// 	// this.ids = this.$store.state.news;
-		// 	// this.$wait.end("newsLoad");
-		// },
 		resizeParallax() {
 			const nbw = document.querySelector(".news-block").offsetHeight;
 			document.querySelector(".Masthead").style.height = `calc(${nbw}px + 6rem)`;
