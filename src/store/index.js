@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Vuex from "vuex";
-// import * as contentful from "contentful";
 import cms from "../api/contentfulService";
 
 Vue.use(Vuex);
@@ -11,16 +10,32 @@ export default new Vuex.Store({
 	},
 	mutations: {
 		SET_NEWS(state, news) {
-			state.news = news.items;
+			state.news = [...state.news, news];
 		},
 	},
 	actions: {
-		async getEntries({ commit }, { type, lim }) {
+		async getEntries({ commit, getters }, { type, lim }) {
 			const data = await cms.getEntries(type, lim);
 
 			switch (type) {
 				case "news":
-					commit("SET_NEWS", data);
+					data.items.forEach(el => {
+						if (!getters.allNewsIDs.some(id => id === el.sys.id)) {
+							commit("SET_NEWS", el);
+						}
+					});
+					break;
+				default:
+					throw type ? new Error(`Type "${type}" not available`) : new Error("No type set");
+			}
+		},
+		async getEntry({ commit, getters }, { type, id }) {
+			const data = await cms.getEntry(id);
+			switch (type) {
+				case "news":
+					if (!getters.allNewsIDs.some(existingID => existingID === id)) {
+						commit("SET_NEWS", data);
+					}
 					break;
 				default:
 					throw type ? new Error(`Type "${type}" not available`) : new Error("No type set");
@@ -28,11 +43,15 @@ export default new Vuex.Store({
 		},
 	},
 	getters: {
-		newsIDs(state) {
+		fractionatedNewsIDs(state) {
+			const fourIDs = state.news.slice(0, 4);
 			return [
-				state.news.map(el => el.sys.id).filter((value, index) => index % 2 === 0),
-				state.news.map(el => el.sys.id).filter((value, index) => index % 2 !== 0),
+				fourIDs.map(el => el.sys.id).filter((value, index) => index % 2 === 0),
+				fourIDs.map(el => el.sys.id).filter((value, index) => index % 2 !== 0),
 			];
+		},
+		allNewsIDs(state) {
+			return state.news.map(el => el.sys.id);
 		},
 		newsContent(state) {
 			return id => {
@@ -50,3 +69,5 @@ export default new Vuex.Store({
 		},
 	},
 });
+
+// -> https://gist.github.com/DawidMyslak/2b046cca5959427e8fb5c1da45ef7748

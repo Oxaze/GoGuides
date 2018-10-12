@@ -22,4 +22,16 @@ export default {
 				});
 		});
 	},
+	getEntry(id) {
+		return new Promise((resolve, reject) => {
+			client
+				.getEntry(id)
+				.then(entry => {
+					resolve(entry);
+				})
+				.catch(err => {
+					reject(err);
+				});
+		});
+	},
 };

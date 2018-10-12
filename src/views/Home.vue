@@ -2,10 +2,10 @@
 	<div class="home-view">
 		<div class="news-block">
 			<div>
-				<News v-for="id in newsIDs[0]" :key="id" v-bind:id="id"></News>
+				<News v-for="id in fractionatedNewsIDs[0]" :key="id" v-bind:id="id"></News>
 			</div>
 			<div>
-				<News v-for="id in newsIDs[1]" :key="id" v-bind:id="id"></News>
+				<News v-for="id in fractionatedNewsIDs[1]" :key="id" v-bind:id="id"></News>
 			</div>
 		</div>
 
@@ -34,13 +34,19 @@ export default {
 		this.getEntries({
 			type: "news",
 			lim: 4,
-		});
+		})
+			.then(() => {
+				this.resizeParallax();
+			})
+			.catch(err => {
+				throw new Error(err);
+			});
 	},
 	updated() {
 		this.resizeParallax();
 	},
 	computed: {
-		...mapGetters(["newsIDs"]),
+		...mapGetters(["fractionatedNewsIDs"]),
 	},
 	methods: {
 		...mapActions(["getEntries"]),

@@ -23,18 +23,6 @@ export default {
 	props: {
 		id: String,
 	},
-	data() {
-		return {
-			cData: {
-				title: null,
-				imageUrl: null,
-				newsText: null,
-				author: null,
-				releaseDate: null,
-				contentType: null,
-			},
-		};
-	},
 	computed: {
 		...mapGetters(["newsContent"]),
 	},

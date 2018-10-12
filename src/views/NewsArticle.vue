@@ -1,40 +1,47 @@
 <template>
   <div class="main-wrapper">
-      <p>{{ cData.title }}</p>
-      <p>{{ cData.newsText }}</p>
+      <p>{{ this.content.title }}</p>
+      <p>{{ this.content.newsText }}</p>
   </div>
 </template> 
 
 <script>
-// eslint-disable-next-line
-// import { cDynamic } from "@/contentful.js";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
 	name: "news-article",
-	created() {
-		this.fetchContent();
-	},
 	data() {
 		return {
 			id: this.$route.params.id,
-			cData: {
-				title: null,
-				imageUrl: null,
-				newsText: null,
-				author: null,
-				releaseDate: null,
-				contentType: null,
-			},
+			content: {},
 		};
 	},
+	created() {
+		this.getEntry({
+			type: "news",
+			id: this.id,
+		})
+			.then(() => {
+				this.content = this.newsContent(this.id);
+			})
+			.catch(err => {});
+	},
 	methods: {
-		fetchContent() {
-			this.cData = cDynamic.getSingleData(this.id, "news");
-		},
+		...mapActions(["getEntry"]),
+	},
+	computed: {
+		...mapGetters(["newsContent"]),
 	},
 	beforeRouteUpdate(to, from, next) {
 		this.id = to.params.id;
-		this.fetchContent();
+		this.getEntry({
+			type: "news",
+			id: this.id,
+		})
+			.then(() => {
+				this.content = this.newsContent(this.id);
+			})
+			.catch(err => {});
 		next();
 	},
 };
