@@ -1,20 +1,21 @@
 <template>
 	<div class="main-wrapper">
-		<v-wait for="loadNews">
+		<v-wait for="loadGuide">
 			<template slot="waiting">
 				<div>				
 					<p>Please wait...</p>
 				</div>
 			</template>
 
-			<p>{{ this.content.title }}</p>
-			<p>{{ this.content.newsText }}</p>
+			<h1>{{ this.content.title }}</h1>
+			<div v-html="compiledMarkdown" v-if="!$wait.is('loadGuide')">></div>
 		</v-wait>
 	</div>
 </template> 
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import marked from "marked";
 
 export default {
 	name: "news-article",
@@ -25,14 +26,14 @@ export default {
 		};
 	},
 	created() {
-		this.$wait.start("loadNews");
+		this.$wait.start("loadGuide");
 		this.getEntry({
-			type: "news",
+			type: "guide",
 			id: this.id,
 		})
 			.then(() => {
-				this.content = this.newsContent(this.id);
-				this.$wait.end("loadNews");
+				this.content = this.guideContent(this.id);
+				this.$wait.end("loadGuide");
 			})
 			.catch(err => {});
 	},
@@ -40,16 +41,19 @@ export default {
 		...mapActions(["getEntry"]),
 	},
 	computed: {
-		...mapGetters(["newsContent"]),
+		...mapGetters(["guideContent"]),
+		compiledMarkdown() {
+			return marked(this.content.guideText, { sanitize: true });
+		},
 	},
 	beforeRouteUpdate(to, from, next) {
 		this.id = to.params.id;
 		this.getEntry({
-			type: "news",
+			type: "guide",
 			id: this.id,
 		})
 			.then(() => {
-				this.content = this.newsContent(this.id);
+				this.content = this.guideContent(this.id);
 			})
 			.catch(err => {});
 		next();

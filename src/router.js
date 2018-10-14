@@ -4,7 +4,7 @@ import Router from "vue-router";
 
 import Home from "./views/Home.vue";
 import NewsArticle from "./views/NewsArticle.vue";
-import Guide from "./views/Guide.vue";
+import GuideArticle from "./views/GuideArticle.vue";
 import GuidesHome from "./views/GuidesHome.vue";
 
 Vue.use(Router);
@@ -28,8 +28,8 @@ export default new Router({
 		},
 		{
 			path: "/guides/:id",
-			name: "guide",
-			component: Guide,
+			name: "guide-article",
+			component: GuideArticle,
 		},
 		{
 			path: "/guides/",

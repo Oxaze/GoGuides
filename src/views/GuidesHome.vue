@@ -1,30 +1,30 @@
 <template>
   <div class="main-wrapper">
       <p>Test</p>
+	  <Guide v-for="id in allIDsOfType('guides')[0]" :key="id" v-bind:id="id"></Guide>
   </div>
 </template> 
 
 <script>
-// eslint-disable-next-line
-// import { cDynamic } from "@/contentful.js";
+import Guide from "@/components/Guide.vue";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
 	name: "guides-home",
-	data() {
-		return {
-			ids: {
-				all: new Array(10),
-				f1: [],
-				f2: [],
-			},
-		};
+	components: {
+		Guide,
+	},
+	created() {
+		this.getEntries({
+			type: "guide",
+			lim: 10,
+		});
+	},
+	computed: {
+		...mapGetters(["allIDsOfType"]),
 	},
 	methods: {
-		fetchContent() {
-			this.$wait.start("guidesLoad");
-			this.ids = cDynamic.getDataIds(10, "guide");
-			this.$wait.end("guidesLoad");
-		},
+		...mapActions(["getEntries"]),
 	},
 };
 </script>

@@ -19,7 +19,7 @@ import { mapGetters } from "vuex";
 // TODO: Add animation
 
 export default {
-	name: "News",
+	name: "news",
 	props: {
 		id: String,
 	},
