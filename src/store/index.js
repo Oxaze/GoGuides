@@ -93,7 +93,7 @@ export default new Vuex.Store({
 				return {
 					title: entry.fields.title,
 					imageUrl: entry.fields.imageUrl,
-					newsText: entry.fields.guideText,
+					guideText: entry.fields.guideText,
 					releaseDate: new Date(Date.parse(entry.fields.releaseDate)).toLocaleDateString("de-DE"),
 					contentType:
 						entry.sys.contentType.sys.id.charAt(0).toUpperCase() +
