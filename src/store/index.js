@@ -70,6 +70,9 @@ export default new Vuex.Store({
 		allIDsOfType(state) {
 			return type => state[type].map(el => el.sys.id);
 		},
+		omega(state) {
+			return ["6ky8AjOitOUWeMk8mo8Y8q"];
+		},
 		newsContent(state) {
 			return id => {
 				const entry = state.news.find(el => el.sys.id === id);
@@ -90,7 +93,7 @@ export default new Vuex.Store({
 				return {
 					title: entry.fields.title,
 					imageUrl: entry.fields.imageUrl,
-					guideText: entry.fields.guideText,
+					newsText: entry.fields.guideText,
 					releaseDate: new Date(Date.parse(entry.fields.releaseDate)).toLocaleDateString("de-DE"),
 					contentType:
 						entry.sys.contentType.sys.id.charAt(0).toUpperCase() +

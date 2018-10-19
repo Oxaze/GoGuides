@@ -18,7 +18,7 @@ import { mapActions, mapGetters } from "vuex";
 import marked from "marked";
 
 export default {
-	name: "news-article",
+	name: "guide-article",
 	data() {
 		return {
 			id: this.$route.params.id,

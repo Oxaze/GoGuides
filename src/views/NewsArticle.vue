@@ -7,7 +7,7 @@
 				</div>
 			</template>
 
-			<p>{{ this.content.title }}</p>
+			<h1>{{ this.content.title }}</h1>
 			<p>{{ this.content.newsText }}</p>
 		</v-wait>
 	</div>
