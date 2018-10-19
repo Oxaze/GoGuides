@@ -70,9 +70,6 @@ export default new Vuex.Store({
 		allIDsOfType(state) {
 			return type => state[type].map(el => el.sys.id);
 		},
-		omega(state) {
-			return ["6ky8AjOitOUWeMk8mo8Y8q"];
-		},
 		newsContent(state) {
 			return id => {
 				const entry = state.news.find(el => el.sys.id === id);

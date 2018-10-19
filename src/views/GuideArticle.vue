@@ -1,5 +1,5 @@
 <template>
-	<div class="main-wrapper">
+	<div class="article-wrapper">
 		<v-wait for="loadGuide">
 			<template slot="waiting">
 				<div>				

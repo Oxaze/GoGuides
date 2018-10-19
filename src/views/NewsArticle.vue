@@ -1,9 +1,9 @@
 <template>
-	<div class="main-wrapper">
+	<div class="article-wrapper">
 		<v-wait for="loadNews">
 			<template slot="waiting">
 				<div>				
-					<p>Please wait...</p>
+					<p>Loading...</p>
 				</div>
 			</template>
 

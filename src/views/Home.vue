@@ -1,11 +1,13 @@
 <template>
 	<div class="home-view">
-		<div class="news-block">
-			<div>
-				<News v-for="id in fractionatedNewsIDs[0]" :key="id" v-bind:id="id"></News>
-			</div>
-			<div>
-				<News v-for="id in fractionatedNewsIDs[1]" :key="id" v-bind:id="id"></News>
+		<div class="news-block-outer">
+			<div class="news-block-inner">
+				<div>
+					<News v-for="id in fractionatedNewsIDs[0]" :key="id" v-bind:id="id"></News>
+				</div>
+				<div>
+					<News v-for="id in fractionatedNewsIDs[1]" :key="id" v-bind:id="id"></News>
+				</div>
 			</div>
 		</div>
 
@@ -51,7 +53,7 @@ export default {
 	methods: {
 		...mapActions(["getEntries"]),
 		resizeParallax() {
-			const nbw = document.querySelector(".news-block").offsetHeight;
+			const nbw = document.querySelector(".news-block-outer").offsetHeight;
 			document.querySelector(".Masthead").style.height = `calc(${nbw}px + 6rem)`;
 		},
 	},

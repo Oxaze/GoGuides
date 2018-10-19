@@ -8,7 +8,7 @@
       <router-link :to="`news/${id}`" class="news__heading">
         <h3>{{ newsContent(id).title }}</h3>  
       </router-link>
-      <p>{{ newsContent(id).contentType }}  •  {{ newsContent(id).releaseDate }}</p>
+      <p class="news__meta-data">{{ newsContent(id).contentType }}  •  {{ newsContent(id).releaseDate }}</p>
     </div>
 		</div>
   </div>
