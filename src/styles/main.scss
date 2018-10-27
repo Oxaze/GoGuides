@@ -20,6 +20,7 @@ body {
   overflow-y: auto;
 }
 
+
 // Navigation
 #nprogress .bar {
   background: $color-primary-sub;
@@ -152,6 +153,20 @@ body {
   .Masthead__image {
     background: linear-gradient($color-secondary, $color-secondary-sub);
   }
+}
+
+.spinner {
+  height: 100%;
+  background-color: $color-white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+}
+
+.app-spinner-wrapper {
+  display: grid;
+  grid-template-rows: 0 60px calc(100vh - 180px) 120px;
 }
 
 

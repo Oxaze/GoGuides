@@ -1,9 +1,9 @@
 <template>
-	<div>
-		<v-wait for="loadGuide">
+	<div class="guide">
+		<v-wait for="loadGuide" style="height: 100%">
 			<template slot="waiting">
-				<div>				
-					<p>Please wait...</p>
+				<div class="spinner">
+					<hollow-dots-spinner :animation-duration="1125" :dot-size="18" :dots-num="3" color="#27426F" />
 				</div>
 			</template>
 
@@ -28,6 +28,7 @@
 
 <script>
 import Parallax from "vue-parallaxy";
+import { HollowDotsSpinner } from "epic-spinners";
 import { mapActions, mapGetters } from "vuex";
 import marked from "marked";
 
@@ -35,6 +36,7 @@ export default {
 	name: "guide-article",
 	components: {
 		Parallax,
+		HollowDotsSpinner,
 	},
 	data() {
 		return {
@@ -44,6 +46,7 @@ export default {
 	},
 	created() {
 		this.$wait.start("loadGuide");
+		document.querySelector("#app").classList.add("app-spinner-wrapper");
 		this.getEntry({
 			type: "guide",
 			id: this.id,
@@ -51,6 +54,7 @@ export default {
 			.then(() => {
 				this.content = this.guideContent(this.id);
 				this.$wait.end("loadGuide");
+				document.querySelector("#app").classList.remove("app-spinner-wrapper");
 			})
 			.catch(err => {});
 	},
@@ -65,12 +69,16 @@ export default {
 	},
 	beforeRouteUpdate(to, from, next) {
 		this.id = to.params.id;
+		this.$wait.start("loadGuide");
+		document.querySelector("#app").classList.add("app-spinner-wrapper");
 		this.getEntry({
 			type: "guide",
 			id: this.id,
 		})
 			.then(() => {
 				this.content = this.guideContent(this.id);
+				this.$wait.end("loadGuide");
+				document.querySelector("#app").classList.remove("app-spinner-wrapper");
 			})
 			.catch(err => {});
 		next();
