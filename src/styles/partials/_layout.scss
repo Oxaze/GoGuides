@@ -28,13 +28,22 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   grid-gap: 3rem;
-   position: relative; 
+  position: relative; 
   left: -50%;
-
 }
 
-.guide-block {
+.guide-block-outer {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  width: 100%;
+}
+
+.guide-block-inner {
   max-width: $tablet;
+  margin: 0 auto;
+  position: relative; 
+  left: -50%;
 }
 
 .news__wrapper {
