@@ -32,18 +32,28 @@
   left: -50%;
 }
 
-.guide-block-outer {
+.article-hero-outer {
   position: absolute;
-  top: 2rem;
   left: 50%;
   width: 100%;
 }
 
-.guide-block-inner {
+.article-hero-inner {
   max-width: $tablet;
+  height: 50vh;
   margin: 0 auto;
   position: relative; 
   left: -50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+}
+
+.article-hero-wrapper{
+    position: relative;
+    overflow: hidden;
+    height: 50vh;
 }
 
 .news__wrapper {
