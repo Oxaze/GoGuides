@@ -15,7 +15,7 @@
 					</div>
 				</div>
 
-			<parallax> 
+			<parallax :breakpoint="'(min-width: 768px)'">
 				<img v-bind:src="this.content.imageUrl" alt="Background Image">
 			</parallax>
 		</div>

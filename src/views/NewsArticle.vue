@@ -15,14 +15,15 @@
 					</div>
 				</div>
 
-			<parallax> 
+			<parallax :breakpoint="'(min-width: 768px)'">
 				<img v-bind:src="this.content.imageUrl" alt="Background Image">
 			</parallax>
 		</div>
 
 		<div class="article-text">
 			<div v-html="compiledMarkdown" v-if="!$wait.is('loadNews')"></div>
-			<p class="article-text__source">Quelle: <a v-bind:href="this.content.source">{{ newsContent(id).source }}</a></p>
+			<br>
+			<p><em>Quelle: <a v-bind:href="this.content.source">{{ newsContent(id).source }}</a></em></p>
 		</div>
 	
 		</v-wait>
