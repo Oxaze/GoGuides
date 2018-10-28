@@ -41,6 +41,10 @@ body {
   letter-spacing: -1px;
 }
 
+.nav__logo a {
+  responsive-font-size: 1.9rem;
+}
+
 .nav__list {
   display: flex;
   align-items: center;
