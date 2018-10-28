@@ -1,5 +1,5 @@
 <template>
-	<div class="guide">
+	<div class="guide-article">
 		<v-wait for="loadGuide" style="height: 100%">
 			<template slot="waiting">
 				<div class="spinner">
@@ -27,15 +27,16 @@
 </template> 
 
 <script>
-import Parallax from "vue-parallaxy";
+import parallax from "vue-parallaxy";
+import marked from "marked";
+import mediumZoom from "medium-zoom";
 import { HollowDotsSpinner } from "epic-spinners";
 import { mapActions, mapGetters } from "vuex";
-import marked from "marked";
 
 export default {
 	name: "guide-article",
 	components: {
-		Parallax,
+		parallax,
 		HollowDotsSpinner,
 	},
 	data() {
@@ -56,6 +57,9 @@ export default {
 				this.$wait.end("loadGuide");
 				document.querySelector("#app").classList.remove("app-spinner-wrapper");
 			})
+			.then(() => {
+				mediumZoom(".article-text img");
+			})
 			.catch(err => {});
 	},
 	methods: {
@@ -69,8 +73,8 @@ export default {
 	},
 	beforeRouteUpdate(to, from, next) {
 		this.id = to.params.id;
-		this.$wait.start("loadGuide");
 		document.querySelector("#app").classList.add("app-spinner-wrapper");
+		this.$wait.start("loadGuide");
 		this.getEntry({
 			type: "guide",
 			id: this.id,
@@ -79,6 +83,9 @@ export default {
 				this.content = this.guideContent(this.id);
 				this.$wait.end("loadGuide");
 				document.querySelector("#app").classList.remove("app-spinner-wrapper");
+			})
+			.then(() => {
+				mediumZoom(".article-text img");
 			})
 			.catch(err => {});
 		next();

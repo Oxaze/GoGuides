@@ -134,20 +134,32 @@ body {
 // Article
 
 .article-text {
-  margin: 0 auto;
-  width: $tablet;
-  padding: 2rem 0;
+  max-width: $mobile;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.article-text img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.article-text__source {
+  font-size: 0.8rem;
+  margin-top: 2rem;
 }
 
 .article-hero-inner {
   color: $color-white;
+  text-align: center;
 }
 
 .article-hero-wrapper .Masthead {
   .Masthead__image img {
     mix-blend-mode: multiply;
     object-position: center !important;
-    margin-top: -35vh;
+    margin-top: -33.3vh;
     opacity: 0.35;
   }
   .Masthead__image {
