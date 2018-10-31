@@ -6,10 +6,10 @@
 					<hollow-dots-spinner :animation-duration="1125" :dot-size="18" :dots-num="3" color="#27426F" />
 				</div>
 			</template>
-
-			<div class="article-hero-wrapper">
-				<div class="article-hero-outer">
-					<div class="article-hero-inner">
+			
+			<div class="article-hero">
+				<div class="article-hero__outer">
+					<div class="article-hero__inner">
 						<h1>{{ this.content.title }}</h1>
 						<p>{{ this.content.contentType }}</p>
 					</div>
@@ -20,7 +20,9 @@
 			</parallax>
 		</div>
 
-		<div class="article-text" v-html="compiledMarkdown" v-if="!$wait.is('loadGuide')"></div>
+		<div class="article-text">
+			<div v-html="compiledMarkdown" v-if="!$wait.is('loadNews')"></div>
+		</div>
 	
 		</v-wait>
 	</div>

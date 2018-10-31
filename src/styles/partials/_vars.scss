@@ -10,9 +10,8 @@ $color-secondary-sub: #F09E23;
 $color-white: #F2F2F2;
 $color-black: #1B1B1B;
 $color-light-grey: #B1B1B1;
-$color-grey: #808080;
-// $color-dark-grey: #333333;
-$color-dark-grey: #555555;
+$color-grey: #6d6d6d;
+$color-dark-grey: #464646;
 
 
 /* Typography
@@ -31,13 +30,14 @@ $headings-font-family: "Montserrat", Helvetica, Arial, sans-serif;
    ========================================================================== */
 
 $duration-long: 375ms;
-$duration-mid: 225ms;
-$duration-short: 195ms;
+$duration-mid: 230ms;
+$duration-short: 150ms;
+// Open / Close or Fade in / out: First longer than last (eg: in 250ms, out 200ms) 
 
 $standard-easing: cubic-bezier(0.4, 0.0, 0.2, 1);
 $deceleration-easing: cubic-bezier(0.0, 0.0, 0.2, 1);
 $acceleration-easing: cubic-bezier(0.4, 0.0, 1, 1);
-$sharp-easing: cubic-bezier(0.4, 0.0, 0.6, 1);
+// $sharp-easing: cubic-bezier(0.4, 0.0, 0.6, 1);
 
 
 /* Other
