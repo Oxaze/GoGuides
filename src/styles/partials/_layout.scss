@@ -52,13 +52,13 @@
   padding: 0 $mobile-padding;
 }
 
-.article-hero-outer {
+.article-hero__outer {
   position: absolute;
   left: 50%;
   width: 100%;
 }
 
-.article-hero-inner {
+.article-hero__inner {
   max-width: $tablet;
   height: 50vh;
   margin: 0 auto;
@@ -71,7 +71,7 @@
   padding: 0 $mobile-padding;
 }
 
-.article-hero-wrapper{
+.article-hero{
   position: relative;
   overflow: hidden;
   height: 50vh;

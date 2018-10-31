@@ -7,11 +7,11 @@
 				</div>
 			</template>
 
-			<div class="article-hero-wrapper">
-				<div class="article-hero-outer">
-					<div class="article-hero-inner">
+			<div class="article-hero">
+				<div class="article-hero__outer">
+					<div class="article-hero__inner">
 						<h1>{{ this.content.title }}</h1>
-						<p>{{ newsContent(id).contentType }}  •  {{ newsContent(id).releaseDate }}</p>
+						<p class="article-hero__meta">{{ newsContent(id).contentType }}  •  {{ newsContent(id).releaseDate }}</p>
 					</div>
 				</div>
 
@@ -23,7 +23,7 @@
 		<div class="article-text">
 			<div v-html="compiledMarkdown" v-if="!$wait.is('loadNews')"></div>
 			<br>
-			<p><em>Quelle: <a v-bind:href="this.content.source">{{ newsContent(id).source }}</a></em></p>
+			<p class="article-text__source">Quelle: <a v-bind:href="this.content.source">{{ newsContent(id).source }}</a></p>
 		</div>
 	
 		</v-wait>

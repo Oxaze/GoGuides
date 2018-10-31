@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:500,700|Muli:400,400i");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:700|Muli:400,400i,300");
 
 body {
   responsive-font-size: 18px;
@@ -17,10 +17,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $headings-font-family;
   margin: 1rem 0 0.5rem 0;
   text-rendering: optimizeLegibility;
-  // display: inline-flex;
-  // flex-wrap: wrap;
-  // justify-content: space-between;
-  // align-items: center;
   word-break: break-word;
 }
 
@@ -68,8 +64,18 @@ a {
   text-decoration: underline;
   text-decoration-skip: ink;
   color: inherit;
-  transition: color 165ms cubic-bezier(0.4, 0, 0.2, 1);
+  // transition: color 165ms cubic-bezier(0.4, 0, 0.2, 1);
   // &:hover {
   //   color: $color-primary-sub;
   // }
+}
+
+.article-text__source {
+  font-weight: 300;
+  color: $color-dark-grey;
+  // margin-top: 2rem;
+}
+
+.article-hero__meta {
+  font-weight: 300;
 }

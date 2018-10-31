@@ -11,7 +11,8 @@ $color-white: #F2F2F2;
 $color-black: #1B1B1B;
 $color-light-grey: #B1B1B1;
 $color-grey: #808080;
-$color-dark-grey: #333333;
+// $color-dark-grey: #333333;
+$color-dark-grey: #555555;
 
 
 /* Typography
@@ -43,6 +44,7 @@ $sharp-easing: cubic-bezier(0.4, 0.0, 0.6, 1);
    ========================================================================== */
 
 $shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.08);
+// $shadow: 0 2px 6px 0 hsla(0,0%,0%,0.2);
 $border-radius: 0.5rem;
 
 $mobile: 768px;

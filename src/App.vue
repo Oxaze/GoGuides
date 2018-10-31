@@ -5,9 +5,9 @@
       <div class="nav__wrapper">
         <h3 class="nav__logo"><router-link class="nav__link" :to="{ path: '/'}">GoGuides</router-link></h3>
         <ul class="nav__list">
-          <li class="nav__item nav__item--first"><router-link class="nav__link" exact-active-class="nav__link--active" :to="{ path: '/guides'}">Guides</router-link></li>
-          <li class="nav__item"><router-link class="nav__link" exact-active-class="nav__link--active" :to="{ path: '/skins'}">Skins</router-link></li>
-          <li class="nav__item"><router-link class="nav__link" exact-active-class="nav__link--active" :to="{ path: '/maps'}">Maps</router-link></li>
+          <li class="nav__item nav__item--first"><router-link class="nav__link" exact-active-class="nav__link--active" :to="{ path: '/guides'}">Guides <span class="nav__link__indicator"></span></router-link></li>
+          <li class="nav__item"><router-link class="nav__link" exact-active-class="nav__link--active" :to="{ path: '/skins'}">Skins <span class="nav__link__indicator"></span></router-link></li>
+          <li class="nav__item"><router-link class="nav__link" exact-active-class="nav__link--active" :to="{ path: '/maps'}">Maps <span class="nav__link__indicator"></span></router-link></li>
         </ul>
       </div>
     </nav>

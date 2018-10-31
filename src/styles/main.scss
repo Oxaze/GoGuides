@@ -36,44 +36,74 @@ body {
 }
 
 .nav__logo {
-  line-height: 60px;
+  responsive-font-size: 1.9rem;
   margin: 0;
   letter-spacing: -1px;
 }
 
-.nav__logo a {
-  responsive-font-size: 1.9rem;
+.nav__logo > .nav__link {
+  color: $color-primary;
+  responsive-font-size: 2rem;
 }
 
 .nav__list {
-  display: flex;
-  align-items: center;
-  height: 100%;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .nav__item {
-    list-style: none;
+    display: inline-block;
+    // list-style: none;
+    // margin-left: 20px;
+    // height: 4rem;
+    // &:hover {
+    //   border-bottom: 2px solid $color-primary;
+    //   color: $color-primary;
+    // }
+    // color: $color-grey;
+    // // transition: all $duration-short $standard-easing;
 }
 
-
-.nav__item {
-    margin-left: 20px;
-}
-
-.nav__item--first {
-  margin-left: 0;
-}
+// .nav__item--first {
+//   margin-left: 0;
+// }
 
 
 .nav__link {
   text-decoration: none;
+  line-height: 4rem;
+  display: inline-block;
+  position: relative;
+  padding: 0 1rem;
+  color: $color-dark-grey;
+  responsive-font-size: 1.2rem;
 }
 
-.nav__item > .nav__link--active {
-  text-decoration: underline;
+.nav__link--active {
+  color: $color-primary;
 }
+
+.nav__link--active > .nav__link__indicator {
+  transform: scaleY(1);
+} 
+
+.nav__link__indicator {
+  transform: scaleY(0);
+  position: absolute;
+  // height: 4px;
+  height: 0.2rem;
+  transform-origin: bottom;
+  bottom: 0;
+  left: 16px;
+  right: 16px;
+  background-color: $color-primary;
+  transition: transform $duration-mid $standard-easing;
+}
+
+// .nav__link--active > .nav__item  {
+//   border-bottom: 2px solid #27426f;
+// }
 
 
 // Home View
@@ -146,17 +176,12 @@ body {
   height: auto;
 }
 
-.article-text__source {
-  font-size: 0.8rem;
-  margin-top: 2rem;
-}
-
-.article-hero-inner {
+.article-hero__inner {
   color: $color-white;
   text-align: center;
 }
 
-.article-hero-wrapper .Masthead {
+.article-hero .Masthead {
   .Masthead__image img {
     mix-blend-mode: multiply;
     object-position: center !important;
@@ -212,3 +237,6 @@ body {
 .footer__item--first {
   margin-left: 0;
 }
+
+
+// -> https://medium.com/refactoring-ui/7-practical-tips-for-cheating-at-design-40c736799886

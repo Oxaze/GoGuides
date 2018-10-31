@@ -11,6 +11,8 @@
 			</div>
 		</div>
 
+		<!-- {{ testObserver() }} -->
+
 		<parallax :sectionHeight="120" :breakpoint="'(min-width: 768px)'">
 			<img 
 			srcset="https://res.cloudinary.com/yrfhccre/image/upload/f_auto%2Cq_auto%2Cw_600%2Cfl_progressive/v1535831110/GoGuides/background-4k 600w,
@@ -38,6 +40,7 @@ export default {
 			lim: 4,
 		})
 			.then(() => {
+				// ADD: window.addEventListener("resize", handleResize)
 				this.resizeParallax();
 			})
 			.catch(err => {
@@ -56,6 +59,15 @@ export default {
 			const nbw = document.querySelector(".news-block-outer").offsetHeight;
 			document.querySelector(".Masthead").style.height = `calc(${nbw}px + 6rem)`;
 		},
+		// testObserver() {
+		// 	const myObserver = new ResizeObserver(entries => {
+		// 		entries.forEach(entry => {
+		// 			console.log("width", entry.contentRect.width);
+		// 			console.log("height", entry.contentRect.height);
+		// 		});
+		// 	});
+		// 	return myObserver.observe(".news");
+		// },
 	},
 };
 </script>
