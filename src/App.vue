@@ -3,11 +3,11 @@
     <nprogress-container></nprogress-container>
     <nav class="nav">
       <div class="nav__wrapper">
-        <h3 class="nav__logo"><router-link class="nav__link" :to="{ path: '/'}">GoGuides</router-link></h3>
+        <h3 class="nav__logo"><router-link class="nav__link nav__link--left" :to="{ path: '/'}">GoGuides</router-link></h3>
         <ul class="nav__list">
           <li><router-link class="nav__link" exact-active-class="nav__link--active" :to="{ path: '/guides'}">Guides <span class="nav__link__indicator"></span></router-link></li>
           <li><router-link class="nav__link" exact-active-class="nav__link--active" :to="{ path: '/skins'}">Skins <span class="nav__link__indicator"></span></router-link></li>
-          <li><router-link class="nav__link" exact-active-class="nav__link--active" :to="{ path: '/maps'}">Maps <span class="nav__link__indicator"></span></router-link></li>
+          <li><router-link class="nav__link nav__link--right" exact-active-class="nav__link--active" :to="{ path: '/maps'}">Maps <span class="nav__link__indicator"></span></router-link></li>
         </ul>
       </div>
     </nav>

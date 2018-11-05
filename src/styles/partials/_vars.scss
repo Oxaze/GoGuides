@@ -1,17 +1,17 @@
 /* Colors
     ========================================================================== */
 
-$color-primary: #27426F; 
-$color-secondary: #FACC33;
+$color-primary: hsl(218, 48%, 29%);
+$color-secondary: hsl(46, 95%, 59%);
 
-$color-primary-sub: #6A8ECA;
-$color-secondary-sub: #F09E23;
+$color-primary-sub: hsl(218, 48%, 60%);
+$color-secondary-sub: hsl(36, 87%, 54);
 
-$color-white: #F2F2F2;
-$color-black: #1B1B1B;
-$color-light-grey: #B1B1B1;
-$color-grey: #6d6d6d;
-$color-dark-grey: #464646;
+$color-white: hsl(0, 0%, 95%);
+$color-black: hsl(0, 0%, 11%);
+$color-light-grey: hsl(0, 0%, 69%);
+$color-grey: hsl(0, 0%, 42%);
+$color-dark-grey: hsl(0, 0%, 28%);
 
 
 /* Typography
@@ -43,9 +43,9 @@ $acceleration-easing: cubic-bezier(0.4, 0.0, 1, 1);
 /* Other
    ========================================================================== */
 
-$shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.08);
-// $shadow: 0 2px 6px 0 hsla(0,0%,0%,0.2);
-$border-radius: 0.5rem;
+// $shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.08);
+$shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+$border-radius: 0.25rem;
 
 $mobile: 768px;
 $tablet: 992px;

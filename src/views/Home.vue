@@ -11,8 +11,6 @@
 			</div>
 		</div>
 
-		<!-- {{ testObserver() }} -->
-
 		<parallax :sectionHeight="120" :breakpoint="'(min-width: 768px)'">
 			<img 
 			srcset="https://res.cloudinary.com/yrfhccre/image/upload/f_auto%2Cq_auto%2Cw_600%2Cfl_progressive/v1535831110/GoGuides/background-4k 600w,
