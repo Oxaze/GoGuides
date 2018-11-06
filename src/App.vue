@@ -34,5 +34,22 @@ export default {
 	components: {
 		NprogressContainer,
 	},
+	created() {
+		let lastScrollTop = 0;
+
+		window.addEventListener(
+			"scroll",
+			() => {
+				const st = window.pageYOffset || document.documentElement.scrollTop;
+				if (st > lastScrollTop) {
+					document.querySelector(".nav").style.top = "-5rem";
+				} else {
+					document.querySelector(".nav").style.top = "0";
+				}
+				lastScrollTop = st;
+			},
+			false
+		);
+	},
 };
 </script>

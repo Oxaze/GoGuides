@@ -18,6 +18,7 @@ body {
   color: $color-black;
   overflow-x: hidden;
   overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 
@@ -30,6 +31,9 @@ body {
   background-color: $color-white;
   color: $color-primary;
   box-shadow: $shadow;
+  position: sticky;
+  transition: all $duration-mid $standard-easing;
+  z-index: 1;
   // &::before {
   //   content: "";
   //   display: block;

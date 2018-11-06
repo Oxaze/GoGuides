@@ -54,8 +54,8 @@ export default {
 	methods: {
 		...mapActions(["getEntries"]),
 		resizeParallax() {
-			const nbw = document.querySelector(".news-block-outer").offsetHeight;
-			document.querySelector(".Masthead").style.height = `calc(${nbw}px + 6rem)`;
+			const nbo = document.querySelector(".news-block-outer").offsetHeight;
+			document.querySelector(".Masthead").style.height = `calc(${nbo}px + 6rem)`;
 		},
 		// testObserver() {
 		// 	const myObserver = new ResizeObserver(entries => {
