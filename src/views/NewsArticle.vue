@@ -3,7 +3,12 @@
 		<v-wait for="loadNews" style="height: 100%">
 			<template slot="waiting">
 				<div class="spinner">
-					<hollow-dots-spinner :animation-duration="1125" :dot-size="18" :dots-num="3" color="#27426F" />
+					<hollow-dots-spinner
+						:animation-duration="1125"
+						:dot-size="18"
+						:dots-num="3"
+						color="#27426F"
+					/>
 				</div>
 			</template>
 
@@ -11,24 +16,27 @@
 				<div class="article-hero__outer">
 					<div class="article-hero__inner">
 						<h1>{{ this.content.title }}</h1>
-						<p class="article-hero__meta">{{ newsContent(id).contentType }}  •  {{ newsContent(id).releaseDate }}</p>
+						<p class="article-hero__meta">
+							{{ newsContent(id).contentType }} • {{ newsContent(id).releaseDate }}
+						</p>
 					</div>
 				</div>
 
-			<parallax :breakpoint="'(min-width: 768px)'">
-				<img v-bind:src="this.content.imageUrl" alt="Background Image">
-			</parallax>
-		</div>
+				<parallax :breakpoint="'(min-width: 768px)'">
+					<img v-bind:src="this.content.imageUrl" alt="Background Image" />
+				</parallax>
+			</div>
 
-		<div class="article-text">
-			<div v-html="compiledMarkdown" v-if="!$wait.is('loadNews')"></div>
-			<br>
-			<p class="article-text__source">Quelle: <a v-bind:href="this.content.source">{{ newsContent(id).source }}</a></p>
-		</div>
-	
+			<div class="article-text">
+				<div v-html="compiledMarkdown" v-if="!$wait.is('loadNews')"></div>
+				<br />
+				<p class="article-text__source">
+					Quelle: <a v-bind:href="this.content.source">{{ newsContent(id).source }}</a>
+				</p>
+			</div>
 		</v-wait>
 	</div>
-</template> 
+</template>
 
 <script>
 import parallax from "vue-parallaxy";

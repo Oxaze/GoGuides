@@ -118,6 +118,58 @@ body {
 }
 
 
+// Notification
+
+.notification {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  will-change: transform;
+}
+
+.notification__message {
+  background-color: $color-primary;
+  color: $color-white;
+  font-weight: 300;
+  // font-size: 1rem;
+  letter-spacing: 0.25px;
+  box-shadow: $shadow;
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  padding: 1.5rem 3rem;
+  max-width: $tablet;
+}
+
+.notification__animation-enter-active {
+  transition: transform $duration-short $acceleration-easing;
+}
+
+.notification__animation-leave-active {
+  transition: transform $duration-short $deceleration-easing;
+}
+
+.notification__animation-enter-to, .notification__animation-leave {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.notification__animation-enter, .notification__animation-leave-to {
+  transform: translateY(5rem);
+  pointer-events: none;
+}
+
+// http://vuetips.com/v-cloak-directive-hides-html-on-startup
+[v-cloak] {
+  display: none
+}
+
+
 // Home View
 
 .home-view {
@@ -156,7 +208,7 @@ body {
   object-position: center;
   border-top-left-radius: $border-radius;
   border-top-right-radius: $border-radius;
-  // mix-blend-mode: multiply;
+  mix-blend-mode: multiply;
   // opacity: 0.35;
 }
 
