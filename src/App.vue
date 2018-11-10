@@ -104,7 +104,7 @@ export default {
 				this.messageIsVisible = false;
 				setTimeout(() => {
 					this.messageText =
-						"Du scheinst momentan offline zu sein! GoGuides könnte nicht volständig funktionieren.";
+						"Du scheinst momentan offline zu sein! GoGuides könnte nicht volständig funktionieren. ⚠️";
 					this.messageIsVisible = true;
 					setTimeout(() => {
 						this.messageIsVisible = false;
@@ -113,7 +113,7 @@ export default {
 			} else {
 				this.messageIsVisible = false;
 				setTimeout(() => {
-					this.messageText = "Du bist wieder online!";
+					this.messageText = "Du bist wieder online! 😎";
 					this.messageIsVisible = true;
 					setTimeout(() => {
 						this.messageIsVisible = false;

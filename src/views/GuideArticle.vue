@@ -3,10 +3,15 @@
 		<v-wait for="loadGuide" style="height: 100%">
 			<template slot="waiting">
 				<div class="spinner">
-					<hollow-dots-spinner :animation-duration="1125" :dot-size="18" :dots-num="3" color="#27426F" />
+					<hollow-dots-spinner
+						:animation-duration="1125"
+						:dot-size="18"
+						:dots-num="3"
+						color="#27426F"
+					/>
 				</div>
 			</template>
-			
+
 			<div class="article-hero">
 				<div class="article-hero__outer">
 					<div class="article-hero__inner">
@@ -15,18 +20,17 @@
 					</div>
 				</div>
 
-			<parallax :breakpoint="'(min-width: 768px)'">
-				<img v-bind:src="this.content.imageUrl" alt="Background Image">
-			</parallax>
-		</div>
+				<parallax :breakpoint="'(min-width: 768px)'">
+					<img v-bind:src="this.content.imageUrl" alt="Background Image" />
+				</parallax>
+			</div>
 
-		<div class="article-text">
-			<div v-html="compiledMarkdown" v-if="!$wait.is('loadNews')"></div>
-		</div>
-	
+			<div class="article-text">
+				<div v-html="compiledMarkdown" v-if="!$wait.is('loadNews')"></div>
+			</div>
 		</v-wait>
 	</div>
-</template> 
+</template>
 
 <script>
 import parallax from "vue-parallaxy";
@@ -62,7 +66,9 @@ export default {
 			.then(() => {
 				mediumZoom(".article-text img");
 			})
-			.catch(err => {});
+			.catch(err => {
+				console.error(err);
+			});
 	},
 	methods: {
 		...mapActions(["getEntry"]),
@@ -70,13 +76,15 @@ export default {
 	computed: {
 		...mapGetters(["guideContent"]),
 		compiledMarkdown() {
-			return marked(this.content.guideText, { sanitize: true });
+			if (this.content.guideText) {
+				return marked(this.content.guideText, { sanitize: true, breaks: true });
+			}
 		},
 	},
 	beforeRouteUpdate(to, from, next) {
 		this.id = to.params.id;
-		document.querySelector("#app").classList.add("app-spinner-wrapper");
 		this.$wait.start("loadGuide");
+		document.querySelector("#app").classList.add("app-spinner-wrapper");
 		this.getEntry({
 			type: "guide",
 			id: this.id,
@@ -89,7 +97,9 @@ export default {
 			.then(() => {
 				mediumZoom(".article-text img");
 			})
-			.catch(err => {});
+			.catch(err => {
+				console.error(err);
+			});
 		next();
 	},
 };

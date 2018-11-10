@@ -72,7 +72,9 @@ export default {
 			.then(() => {
 				mediumZoom(".article-text img");
 			})
-			.catch(err => {});
+			.catch(err => {
+				console.error(err);
+			});
 	},
 	methods: {
 		...mapActions(["getEntry"]),
@@ -80,19 +82,23 @@ export default {
 	computed: {
 		...mapGetters(["newsContent"]),
 		compiledMarkdown() {
-			return marked(this.content.newsText, { sanitize: true, breaks: true });
+			if (this.content.newsText) {
+				return marked(this.content.newsText, { sanitize: true, breaks: true });
+			}
 		},
 		sourceHostName() {
-			const match = this.content.source.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
-			if (
-				match != null &&
-				match.length > 2 &&
-				typeof match[2] === "string" &&
-				match[2].length > 0
-			) {
-				return match[2];
+			if (this.content.source) {
+				const match = this.content.source.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
+				if (
+					match != null &&
+					match.length > 2 &&
+					typeof match[2] === "string" &&
+					match[2].length > 0
+				) {
+					return match[2];
+				}
+				return null;
 			}
-			return null;
 		},
 	},
 	beforeRouteUpdate(to, from, next) {
@@ -111,7 +117,9 @@ export default {
 			.then(() => {
 				mediumZoom(".article-text img");
 			})
-			.catch(err => {});
+			.catch(err => {
+				console.error(err);
+			});
 		next();
 	},
 };
