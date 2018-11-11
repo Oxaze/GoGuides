@@ -15,13 +15,13 @@
 			<div class="article-hero">
 				<div class="article-hero__outer">
 					<div class="article-hero__inner">
-						<h1>{{ this.content.title }}</h1>
-						<p>{{ this.content.contentType }}</p>
+						<h1>{{ content.title }}</h1>
+						<p class="article-hero__meta">{{ content.contentType }}</p>
 					</div>
 				</div>
 
 				<parallax :breakpoint="'(min-width: 768px)'">
-					<img v-bind:src="this.content.imageUrl" alt="Background Image" />
+					<img v-bind:src="content.imageUrl" alt="Background Image" />
 				</parallax>
 			</div>
 
