@@ -6,6 +6,11 @@
 				<h3 class="nav__logo">
 					<router-link class="nav__link nav__link--left" :to="{ path: '/' }">GoGuides</router-link>
 				</h3>
+				<!--
+					<button class="hamburger hamburger--collapse is-active" type="button">
+						<span class="hamburger-box"> <span class="hamburger-inner"></span> </span>
+					</button>
+				-->
 				<ul class="nav__list">
 					<li>
 						<router-link
@@ -96,6 +101,13 @@ export default {
 			},
 			false
 		);
+
+		// setTimeout(() => {
+		// 	const hamburger = document.querySelector(".hamburger");
+		// 	hamburger.addEventListener("click", () => {
+		// 		hamburger.classList.toggle("is-active");
+		// 	});
+		// }, 1000);
 	},
 	methods: {
 		offlineHandler() {
