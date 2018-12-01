@@ -6,12 +6,14 @@
 				<h3 class="nav__logo">
 					<router-link class="nav__link nav__link--left" :to="{ path: '/' }">GoGuides</router-link>
 				</h3>
+
+				<button class="nav__toggle-button nav__link nav__link--right" v-on:click="toggleMenu">
+					<img src="./assets/menu.svg" alt="menu" />
+				</button>
+
 				<!--
-					<button class="hamburger hamburger--collapse is-active" type="button">
-						<span class="hamburger-box"> <span class="hamburger-inner"></span> </span>
-					</button>
+					<p v-on:click="toggleMenu" class="nav__toggle-button nav__link nav__link--right">open</p>
 				-->
-				<p v-on:click="toggleMenu" class="nav__toggle-button nav__link nav__link--right">open</p>
 
 				<ul class="nav__list" v-bind:class="{ 'nav__list--open': menuOpen }">
 					<li>
