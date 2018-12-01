@@ -11,10 +11,12 @@
 						<span class="hamburger-box"> <span class="hamburger-inner"></span> </span>
 					</button>
 				-->
-				<ul class="nav__list">
+				<p v-on:click="toggleMenu" class="nav__toggle-button nav__link nav__link--right">open</p>
+
+				<ul class="nav__list" v-bind:class="{ 'nav__list--open': menuOpen }">
 					<li>
 						<router-link
-							class="nav__link"
+							class="nav__link nav__link--left-mobile"
 							exact-active-class="nav__link--active"
 							:to="{ path: '/guides' }"
 							>Guides <span class="nav__link__indicator"></span
@@ -73,10 +75,12 @@ export default {
 		Notification,
 	},
 	data() {
+		// TODO: Add cookie notification
 		return {
 			isOffline: !navigator.onLine,
 			messageText: "",
 			messageIsVisible: !navigator.onLine,
+			menuOpen: false,
 		};
 	},
 	created() {
@@ -132,6 +136,9 @@ export default {
 					}, 5000);
 				}, 150);
 			}
+		},
+		toggleMenu() {
+			this.menuOpen = !this.menuOpen;
 		},
 	},
 };
