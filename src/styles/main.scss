@@ -78,26 +78,29 @@ body {
 .nav__list--open {
     display: flex;
     justify-content: center;
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 4rem;
+      width: 100%;
+      bottom: 0;
+      background: linear-gradient(to right, $color-secondary, $color-secondary-sub);
+    }
 }
 
 .nav__list  >  li {
     display: inline-block;
-    margin-top: -1rem;
-
-    @media (min-width: $mobile) {
-        margin-top: 0;
-    }
 }
 
 .nav__link {
     text-decoration: none;
     line-height: 4rem;
+    height: 100%;
     display: inline-block;
     position: relative;
     padding: 0 1rem;
-    // color: $color-dark-grey;
     color: $color-grey;
-
     // responsive-font-size: 1.2rem;
     &:hover {
         color: $color-primary;
@@ -137,6 +140,10 @@ body {
 
 .nav__link--left-mobile > .nav__link__indicator {
     left: 0;
+
+    @media (min-width: $mobile) {
+        left: 16px;
+    }
 }
 
 .nav__link__indicator {

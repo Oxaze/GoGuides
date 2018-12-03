@@ -7,7 +7,7 @@
 					<router-link class="nav__link nav__link--left" :to="{ path: '/' }">GoGuides</router-link>
 				</h3>
 
-				<button class="nav__toggle-button nav__link nav__link--right" v-on:click="toggleMenu">
+				<button class="nav__toggle-button nav__link nav__link--right btn" v-on:click="toggleMenu">
 					<img src="./assets/menu.svg" alt="menu" />
 				</button>
 
@@ -99,7 +99,9 @@ export default {
 			() => {
 				const st = window.pageYOffset || document.documentElement.scrollTop;
 				if (st > lastScrollTop) {
-					document.querySelector(".nav").style.top = "-5rem";
+					document.querySelector(".nav").style.top = `calc(-${
+						document.querySelector(".nav").offsetHeight
+					}px - 8px)`;
 				} else {
 					document.querySelector(".nav").style.top = "0";
 				}
@@ -108,12 +110,21 @@ export default {
 			false
 		);
 
+		window.addEventListener("resize", () => {
+			this.menuOpen = false;
+		});
+
 		// setTimeout(() => {
 		// 	const hamburger = document.querySelector(".hamburger");
 		// 	hamburger.addEventListener("click", () => {
 		// 		hamburger.classList.toggle("is-active");
 		// 	});
 		// }, 1000);
+	},
+	watch: {
+		$route(to, from) {
+			this.menuOpen = false;
+		},
 	},
 	methods: {
 		offlineHandler() {
