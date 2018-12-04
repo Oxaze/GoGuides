@@ -39,12 +39,15 @@ export default {
 			lim: 4,
 		})
 			.then(() => {
-				// ADD: window.addEventListener("resize", handleResize)
 				this.resizeParallax();
 			})
 			.catch(err => {
-				throw new Error(err);
+				console.error(err);
 			});
+
+		window.addEventListener("resize", () => {
+			this.resizeParallax();
+		});
 	},
 	updated() {
 		this.resizeParallax();
@@ -58,15 +61,6 @@ export default {
 			const nbo = document.querySelector(".news-block-outer").offsetHeight;
 			document.querySelector(".Masthead").style.height = `calc(${nbo}px + 6rem)`;
 		},
-		// testObserver() {
-		// 	const myObserver = new ResizeObserver(entries => {
-		// 		entries.forEach(entry => {
-		// 			console.log("width", entry.contentRect.width);
-		// 			console.log("height", entry.contentRect.height);
-		// 		});
-		// 	});
-		// 	return myObserver.observe(".news");
-		// },
 	},
 };
 </script>

@@ -75,6 +75,10 @@ body {
     }
 }
 
+#nprogress .spinner {
+   display: none !important;
+}
+
 .nav__list--open {
     display: flex;
     justify-content: center;

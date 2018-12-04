@@ -11,9 +11,7 @@ import "./registerServiceWorker";
 import App from "./App.vue";
 
 Vue.config.productionTip = false;
-Vue.use(NProgress, {
-	showSpinner: false,
-});
+Vue.use(NProgress);
 Vue.use(VueWait);
 
 const nprogress = new NProgress({ parent: "#app" });

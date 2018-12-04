@@ -93,22 +93,23 @@ export default {
 			this.offlineHandler();
 		});
 
-		let lastScrollTop = 0;
-		window.addEventListener(
-			"scroll",
-			() => {
-				const st = window.pageYOffset || document.documentElement.scrollTop;
-				if (st > lastScrollTop) {
-					document.querySelector(".nav").style.top = `calc(-${
-						document.querySelector(".nav").offsetHeight
-					}px - 8px)`;
-				} else {
-					document.querySelector(".nav").style.top = "0";
-				}
-				lastScrollTop = st;
-			},
-			false
-		);
+		// NOT WORKING PROPERLY:
+		// let lastScrollTop = 0;
+		// window.addEventListener(
+		// 	"scroll",
+		// 	() => {
+		// 		const st = window.pageYOffset || document.documentElement.scrollTop;
+		// 		if (st > lastScrollTop) {
+		// 			document.querySelector(".nav").style.top = `calc(-${
+		// 				document.querySelector(".nav").offsetHeight
+		// 			}px - 8px)`;
+		// 		} else {
+		// 			document.querySelector(".nav").style.top = "0";
+		// 		}
+		// 		lastScrollTop = st;
+		// 	},
+		// 	false
+		// );
 
 		window.addEventListener("resize", () => {
 			this.menuOpen = false;
