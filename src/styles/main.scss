@@ -246,7 +246,7 @@ body {
     // }
 }
 
-.news:not(:first-of-type) {
+.news:last-of-type, .guide:last-of-type {
     margin: 0;
 }
 
@@ -294,6 +294,36 @@ body {
     margin: 0;
     font-size: 1rem;
     letter-spacing: 0.25px;
+}
+
+// Guides
+
+.guide {
+    background-color: $color-secondary;
+    border-radius: $border-radius;
+    margin-bottom: 2rem;
+}
+
+.guide__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+}
+
+.guide__wrapper-right {
+    text-align: center;
+}
+
+.guide__heading {
+    margin-bottom: 2rem;
+    text-decoration: none;
+}
+
+.guide__heading > h2 {
+    margin: 0;
+    // display: inline;
 }
 
 
