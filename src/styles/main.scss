@@ -7,6 +7,8 @@
 @import "partials/forms";
 @import "partials/typography";
 
+@import "vendors/hamburgers/hamburgers";
+
 
 /* Miscellaneous
    ========================================================================== */
@@ -56,10 +58,20 @@ body {
 
 .nav__toggle-button {
     margin: 0;
+    height: 4rem !important;
 
     @media (min-width: $mobile) {
         display: none !important;
     }
+}
+
+.hamburger-box {
+    display: block !important;
+}
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+    background-color: $color-primary !important;
+    // color: $color-primary !important;
 }
 
 .nav__list {
@@ -246,7 +258,7 @@ body {
     // }
 }
 
-.news:last-of-type, .guide:last-of-type {
+.news:last-of-type {
     margin: 0;
 }
 
@@ -299,9 +311,10 @@ body {
 // Guides
 
 .guide {
-    background-color: $color-secondary;
+    background-color: $color-white;
     border-radius: $border-radius;
     margin-bottom: 2rem;
+    box-shadow: $shadow;
 }
 
 .guide__img {
