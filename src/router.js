@@ -6,6 +6,7 @@ import Home from "./views/Home.vue";
 import NewsArticle from "./views/NewsArticle.vue";
 import GuideArticle from "./views/GuideArticle.vue";
 import GuidesHome from "./views/GuidesHome.vue";
+import PageNotFound from "./views/PageNotFound.vue";
 
 Vue.use(Router);
 
@@ -35,6 +36,11 @@ export default new Router({
 			path: "/guides/",
 			name: "guides-home",
 			component: GuidesHome,
+		},
+		{
+			path: "*",
+			name: "page-not-found",
+			component: PageNotFound,
 		},
 	],
 });

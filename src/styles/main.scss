@@ -23,6 +23,10 @@ body {
     scroll-behavior: smooth;
 }
 
+::selection {
+  background-color: $color-secondary;
+  color: $color-white;
+}
 
 // Navigation
 #nprogress .bar {
@@ -115,7 +119,7 @@ body {
     height: 100%;
     display: inline-block;
     position: relative;
-    padding: 0 1rem;
+    margin: 0 1rem;
     color: $color-grey;
     // responsive-font-size: 1.2rem;
     &:hover {
@@ -127,19 +131,19 @@ body {
 }
 
 .nav__link--left {
-    padding: 0 1rem 0 0;
+    margin: 0 1rem 0 0;
 }
 
 .nav__link--left-mobile {
-    padding: 0 1rem 0 0;
+    margin: 0 1rem 0 0;
 
     @media (min-width: $mobile) {
-        padding: 0 1rem;
+        margin: 0 1rem;
     }
 }
 
 .nav__link--right {
-    padding: 0 0 0 1rem;
+    margin: 0 0 0 1rem;
 }
 
 .nav__link--active {
@@ -150,26 +154,16 @@ body {
     transform: scaleY(1);
 }
 
-.nav__link--right > .nav__link__indicator {
-    right: 0;
-}
-
-.nav__link--left-mobile > .nav__link__indicator {
-    left: 0;
-
-    @media (min-width: $mobile) {
-        left: 16px;
-    }
-}
-
 .nav__link__indicator {
     transform: scaleY(0);
     position: absolute;
     height: 0.2rem;
     transform-origin: bottom;
     bottom: 0;
-    left: 16px;
-    right: 16px;
+    // left: 16px;
+    left: 0;
+    right: 0;
+    // right: 16px;
     background-color: $color-primary;
     transition: transform $duration-mid $standard-easing;
 }
@@ -295,6 +289,7 @@ body {
 
 .news__heading > h3 {
     margin: 0;
+    line-height: normal;
 }
 
 .news__img-link {
@@ -385,6 +380,11 @@ body {
 .footer {
     height: 8rem;
     background: $color-secondary;
+}
+
+.footer *::selection {
+    background: $color-white;
+    color: $color-black;
 }
 
 .footer__wrapper * {
