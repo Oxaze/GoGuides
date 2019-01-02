@@ -46,7 +46,7 @@
 
 		<router-view />
 
-		<footer class="footer">
+		<footer class="footer" role="contentinfo">
 			<div class="footer__wrapper">
 				<p class="footer_copyright">Copyright © GoGuides 2018</p>
 				<ul class="footer__list">
