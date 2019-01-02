@@ -49,11 +49,10 @@
   left: -50%;
 }
 
-.guide-block {
+.guides-block {
   max-width: $screen;
-  margin: 2rem auto;
-  padding: 0 $mobile-padding;
-  background: $color-secondary;
+  margin: 0 auto;
+  padding: 2rem $mobile-padding;
 }
 
 .guide {

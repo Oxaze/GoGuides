@@ -225,7 +225,7 @@ body {
 
 // Home View
 
-.home-view {
+.news-view {
     position: relative;
     overflow: hidden;
 }
@@ -305,11 +305,24 @@ body {
 
 // Guides
 
+.guides-view {
+    background-color: $color-secondary;
+}
+
+.guides-placeholder {
+    background: linear-gradient(135deg, $color-primary, $color-primary-sub);
+    height: 10rem;
+}
+
 .guide {
     background-color: $color-white;
     border-radius: $border-radius;
     margin-bottom: 2rem;
     box-shadow: $shadow;
+}
+
+.guide:last-of-type {
+    margin-bottom: 0;
 }
 
 .guide__img {

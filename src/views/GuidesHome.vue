@@ -1,6 +1,13 @@
 <template>
-	<div class="guide-block">
-		<Guide v-for="id in allIDsOfType('guides')" :key="id" v-bind:id="id"></Guide>
+	<div>
+		<div class="guides-view">
+			<div class="guides-block">
+				<Guide v-for="id in allIDsOfType('guides')" :key="id" v-bind:id="id"></Guide>
+			</div>
+		</div>
+		<div class="guides-placeholder">
+			<!-- Fill with input dor submitting more guide examples -->
+		</div>
 	</div>
 </template>
 

@@ -46,12 +46,20 @@ export default new Vuex.Store({
 			switch (type) {
 				case "news":
 					if (!getters.allIDsOfType("news").some(existingID => existingID === id)) {
-						commit("SET_NEWS", data);
+						// console.log(`Requested type: ${type}`, `Present type: ${data.sys.contentType.sys.id}`);
+						// console.log(type === data.sys.contentType.sys.id);
+						if (type === data.sys.contentType.sys.id) {
+							commit("SET_NEWS", data);
+						}
 					}
 					break;
 				case "guide":
 					if (!getters.allIDsOfType("guides").some(existingID => existingID === id)) {
-						commit("SET_GUIDES", data);
+						// console.log(`Requested type: ${type}`, `Present type: ${data.sys.contentType.sys.id}`);
+						// console.log(type === data.sys.contentType.sys.id);
+						if (type === data.sys.contentType.sys.id) {
+							commit("SET_GUIDES", data);
+						}
 					}
 					break;
 				default:
