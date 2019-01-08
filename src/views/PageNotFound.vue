@@ -1,5 +1,5 @@
 <template>
-	<h1>Page not found!</h1>
+	<div class="pnf"><h1>Seite nicht gefunden 😢</h1></div>
 </template>
 
 <script>

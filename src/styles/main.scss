@@ -306,7 +306,8 @@ body {
 // Guides
 
 .guides-view {
-    background-color: $color-secondary;
+    // background-color: $color-secondary;
+    background: linear-gradient(to right, $color-secondary, $color-secondary-sub);
 }
 
 .guides-placeholder {
@@ -422,6 +423,18 @@ body {
 
 .footer__item--first {
     margin-left: 0;
+}
+
+
+// Page not found
+
+.pnf {
+    height: calc(100vh - 12rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, $color-primary, $color-primary-sub);
+    color: $color-white;
 }
 
 
