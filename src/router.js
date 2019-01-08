@@ -2,26 +2,26 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-import Home from "./views/Home.vue";
-import NewsArticle from "./views/NewsArticle.vue";
-import GuideArticle from "./views/GuideArticle.vue";
-import GuidesHome from "./views/GuidesHome.vue";
-import PageNotFound from "./views/PageNotFound.vue";
+// import Home from "./views/Home.vue";
+// import NewsArticle from "./views/NewsArticle.vue";
+// import GuideArticle from "./views/GuideArticle.vue";
+// import GuidesHome from "./views/GuidesHome.vue";
+// import PageNotFound from "./views/PageNotFound.vue";
 
 Vue.use(Router);
 
 export default new Router({
-	// mode: "history",
+	mode: "history",
 	routes: [
 		{
 			path: "/",
 			name: "home",
-			component: Home,
+			component: () => import("./views/Home.vue"),
 		},
 		{
 			path: "/news/:id",
 			name: "news-article",
-			component: NewsArticle,
+			component: () => import("./views/NewsArticle.vue"),
 		},
 		{
 			path: "/news/",
@@ -30,17 +30,18 @@ export default new Router({
 		{
 			path: "/guides/:id",
 			name: "guide-article",
-			component: GuideArticle,
+			component: () => import("./views/GuideArticle.vue"),
 		},
+		// Perhaps add nested routing like in vue docs or vue example app
 		{
 			path: "/guides/",
 			name: "guides-home",
-			component: GuidesHome,
+			component: () => import("./views/GuidesHome.vue"),
 		},
 		{
 			path: "*",
 			name: "page-not-found",
-			component: PageNotFound,
+			component: () => import("./views/PageNotFound.vue"),
 		},
 	],
 });
