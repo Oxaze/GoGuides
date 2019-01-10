@@ -39,9 +39,18 @@ export default new Router({
 			component: () => import("./views/GuidesHome.vue"),
 		},
 		{
-			path: "*",
+			path: "/404/",
 			name: "page-not-found",
 			component: () => import("./views/PageNotFound.vue"),
+		},
+		// {
+		// 	path: "*",
+		// 	redirect: { name: "page-not-found" },
+		// },
+		{
+			path: "/404/",
+			component: () => import("./views/PageNotFound.vue"),
+			alias: "*",
 		},
 	],
 });

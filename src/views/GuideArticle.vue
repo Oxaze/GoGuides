@@ -68,6 +68,8 @@ export default {
 			})
 			.catch(err => {
 				console.error(err);
+				// DO THIS: https://router.vuejs.org/guide/essentials/navigation.html, https://github.com/gothinkster/vue-realworld-example-app/blob/master/src/router/index.js
+				this.$router.replace({ name: "page-not-found" });
 			});
 	},
 	methods: {
@@ -99,6 +101,7 @@ export default {
 			})
 			.catch(err => {
 				console.error(err);
+				this.$router.replace({ name: "page-not-found" });
 			});
 		next();
 	},

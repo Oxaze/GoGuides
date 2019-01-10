@@ -55,11 +55,12 @@ export default new Vuex.Store({
 					break;
 				case "guide":
 					if (!getters.allIDsOfType("guides").some(existingID => existingID === id)) {
-						// console.log(`Requested type: ${type}`, `Present type: ${data.sys.contentType.sys.id}`);
-						// console.log(type === data.sys.contentType.sys.id);
 						if (type === data.sys.contentType.sys.id) {
 							commit("SET_GUIDES", data);
 						}
+						//  else {
+						// 	throw new Error("TESTST");
+						// }
 					}
 					break;
 				default:

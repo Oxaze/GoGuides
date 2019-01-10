@@ -72,6 +72,7 @@ export default {
 			})
 			.catch(err => {
 				console.error(err);
+				this.$router.replace({ name: "page-not-found" });
 			});
 	},
 	methods: {
@@ -117,6 +118,7 @@ export default {
 			})
 			.catch(err => {
 				console.error(err);
+				this.$router.replace({ name: "page-not-found" });
 			});
 		next();
 	},
