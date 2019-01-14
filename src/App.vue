@@ -11,6 +11,7 @@
 					class="hamburger hamburger--slider nav__toggle-button nav__link nav__link--right btn"
 					v-bind:class="{ 'is-active': menuOpen }"
 					v-on:click="toggleMenu"
+					aria-label="Open menu"
 				>
 					<span class="hamburger-box"> <span class="hamburger-inner"></span> </span>
 				</button>
@@ -48,7 +49,7 @@
 
 		<footer class="footer" role="contentinfo">
 			<div class="footer__wrapper">
-				<p class="footer_copyright">Copyright © GoGuides 2018</p>
+				<p class="footer_copyright">Copyright © GoGuides 2019</p>
 				<ul class="footer__list">
 					<li class="footer__item footer__item--first">
 						<router-link :to="{ path: '/imprint' }">Impressum</router-link>
