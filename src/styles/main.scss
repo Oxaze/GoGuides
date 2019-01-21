@@ -39,7 +39,7 @@ body {
     box-shadow: $shadow;
     position: sticky;
     transition: all $duration-mid $standard-easing;
-    z-index: 1;
+    z-index: 2;
     // &::before {
     //   content: "";
     //   display: block;
@@ -63,6 +63,7 @@ body {
 .nav__toggle-button {
     margin: 0;
     height: 4rem !important;
+    display: initial;
 
     @media (min-width: $mobile) {
         display: none !important;
@@ -168,6 +169,27 @@ body {
     transition: transform $duration-mid $standard-easing;
 }
 
+// Change to min-width (?)
+@media (max-width: $mobile) {
+  .page-overlay {
+    background-color: black;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    transition: opacity $duration-short $standard-easing;
+    visibility: hidden;
+  }
+
+  .page-overlay--open {
+    opacity: 0.5;
+    visibility: visible;
+    z-index: 1;
+  }
+}
+
 
 // Notification
 
@@ -238,7 +260,7 @@ body {
 .news {
     background-color: $color-white;
     border-radius: $border-radius;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     box-shadow: $shadow;
 
     // transition: all $duration-mid $standard-easing;

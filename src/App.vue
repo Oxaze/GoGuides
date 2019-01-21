@@ -45,6 +45,11 @@
 			</div>
 		</nav>
 
+		<div
+			v-on:click="toggleMenu"
+			class="page-overlay"
+			v-bind:class="{ 'page-overlay--open': menuOpen }"
+		></div>
 		<router-view />
 
 		<footer class="footer" role="contentinfo">
