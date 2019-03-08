@@ -58,8 +58,10 @@ export default {
 	methods: {
 		...mapActions(["getEntries"]),
 		resizeParallax() {
-			const nbo = document.querySelector(".news-block-outer").offsetHeight;
-			document.querySelector(".Masthead").style.height = `calc(${nbo}px + 6rem)`;
+			if (document.querySelector(".news-block-outer").offsetHeight) {
+				const nbo = document.querySelector(".news-block-outer").offsetHeight;
+				document.querySelector(".Masthead").style.height = `calc(${nbo}px + 6rem)`;
+			}
 		},
 	},
 };

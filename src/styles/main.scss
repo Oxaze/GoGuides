@@ -2,12 +2,14 @@
    ========================================================================== */
 
 @import "partials/vars";
+
+@import "~hamburgers/_sass/hamburgers/hamburgers";
+@import "~@zellwk/css-reset/reset";
+
 @import "partials/layout";
 @import "partials/scrollbar";
 @import "partials/forms";
 @import "partials/typography";
-
-@import "vendors/hamburgers/hamburgers";
 
 
 /* Miscellaneous
