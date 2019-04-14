@@ -3,9 +3,7 @@ workbox.setConfig({
 });
 
 // Precache most important assets
-workbox.precaching.precacheAndRoute(["index.html"], {
-	cleanUrls: false,
-});
+workbox.precaching.precacheAndRoute(["index.html"]);
 
 // Cache less important assets
 workbox.routing.registerRoute(

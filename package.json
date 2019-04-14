@@ -29,7 +29,7 @@
     "@vue/cli-plugin-pwa": "^3.0.3",
     "@vue/cli-service": "^3.0.3",
     "node-sass": "^4.9.0",
-    "rfs": "^7.1.8",
+    "rfs": "^8.0.4",
     "sass-loader": "^7.0.1",
     "vue-template-compiler": "^2.5.16"
   },
