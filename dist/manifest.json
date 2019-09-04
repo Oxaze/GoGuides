@@ -1,0 +1,20 @@
+{
+  "name": "GoGuides",
+  "short_name": "GoGuides",
+  "icons": [
+    {
+      "src": "https://res.cloudinary.com/yrfhccre/image/upload/c_scale,w_192/v1547494833/GoGuides/Icon_xkk0id.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://res.cloudinary.com/yrfhccre/image/upload/c_scale,w_512/v1547494833/GoGuides/Icon_xkk0id.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#facb33",
+  "theme_color": "#26406d"
+}
